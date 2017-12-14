@@ -7,7 +7,7 @@ Recommended usage via Docker [Kitematic](https://kitematic.com/) & [Docker Hub](
 
 # Simplified usage (run in shell/ terminal/ cmd)
 ```sh
-docker pull majamee/arch-ffmpeg-gpac
+docker pull majamee/alpine-dash-hls
 docker run -v /absolute/path/to/video/:/video majamee/alpine-dash-hls name_of_my_video_file.ext
 ```
 Please just replace in the command above the absolute path to your video file folder and the full file name of your video file to be converted.
