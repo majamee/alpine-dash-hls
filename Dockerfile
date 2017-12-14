@@ -30,7 +30,7 @@ RUN                buildDeps="build-base \
                    sdl-dev \
                    openjpeg-dev \
                    expat-dev" && \
-                   apk  add --no-cache --update ${buildDeps} ffmpeg libxslt openssl openssl-dev && \
+                   apk  add --no-cache --update ${buildDeps} ffmpeg libxslt openssl openssl-dev libpng-dev libpng && \
                    git clone https://github.com/squidpickles/mpd-to-m3u8.git /app/mpd-to-m3u8 && \
                    git clone https://github.com/gpac/gpac.git /tmp/gpac && \
                    cd /tmp/gpac && ./configure && make && make install && make distclean && rm -rf /tmp && \
