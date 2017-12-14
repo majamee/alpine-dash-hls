@@ -3,7 +3,7 @@
 # alpine-dash-hls
 A ready-prepared video transcoding pipeline to create DASH/ HLS compatible video files &amp; playlists.
 
-Recommended usage via Docker [Kitematic](https://kitematic.com/) & [Docker Hub](https://hub.docker.com/r/majamee/arch-ffmpeg-gpac/).
+Recommended usage via Docker [Kitematic](https://kitematic.com/) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/).
 
 # Simplified usage (run in shell/ terminal/ cmd)
 ```sh
