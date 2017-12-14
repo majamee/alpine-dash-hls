@@ -36,7 +36,7 @@ RUN                buildDeps="build-base \
                    git clone https://github.com/gpac/gpac.git /tmp/gpac && \
                    cd /tmp/gpac && ./configure && make && make install && make distclean && rm -rf /tmp && \
                    apk del ${buildDeps} && rm -rf /var/cache/apk/* && \
-                   chmod +x /bin/entrypoint.sh
+                   chmod +x /bin/entrypoint.sh && cd /video
 
 
 ENTRYPOINT          ["/bin/entrypoint.sh"]
