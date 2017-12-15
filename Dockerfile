@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM                alpine:latest
 
 COPY                ./entrypoint.sh /bin/entrypoint.sh
 
