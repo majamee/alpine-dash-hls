@@ -65,4 +65,5 @@ Suggestions welcome. :)
 * Fragments video files in 2 second windows to allow dynamic quality switching based on available bandwidth
 * Creates master MPD-Playlist which connects everything (MPEG-DASH)
 * Creates master M3U8-Playlist for HLS
-* Adds HTML files for playback ready to be included into the own website into the `output` in a sub-folder matching the video file name next to all other created files
+* Creates all output files neatly stored in a sub-folder matching the video file name in the folder `output` next to the transcoded video file
+* Adds also HTML file including code for inclusion into the own website for playback next to all other created files
