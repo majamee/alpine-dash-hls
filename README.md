@@ -60,8 +60,8 @@ Suggestions welcome. :)
 * Creates HLS files for compatibility with Safari on iOS
 * Optimizes video files for web playback (`moov` atom)
 * Compresses videos using H.264@CRF22 (for best compatibility)
-* Compress audio using AAC@128k (for DASH as separate track to save data)
-* Creates automatically 3 quality tiers (Full HD/ HD/ DVD quality)
+* Compresses audio using AAC@128k (for DASH as separate track to save data)
+* Creates automatically 3 quality levels (Full HD/ HD/ DVD quality)
 * Fragments video files in 2 second windows to allow dynamic quality switching based on available bandwidth
 * Creates master MPD-Playlist which connects everything (MPEG-DASH)
 * Creates master M3U8-Playlist for HLS
