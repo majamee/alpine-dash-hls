@@ -1,0 +1,17 @@
+# This adds the MIME Types for the different file types used
+AddType application/dash+xml .mpd
+AddType application/x-mpegURL .m3u8
+AddType video/MP2T .ts
+AddType video/mp4 .mp4
+
+# If the video files are hosted on a different location than the player CORS headers
+# need to be set to allow browsers access to the resources
+# You might want to replace the * with your players origination host so not every page
+# can include your hosted content freely, but * is the best for testing the general setup
+# as it invokes the least restrictions
+<IfModule mod_headers.c>    
+    Header set Access-Control-Allow-Origin *
+    Header set Access-Control-Allow-Credentials true
+    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Range"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, HEAD"
+</IfModule>
