@@ -1,7 +1,7 @@
 #!/bin/sh
 
 input_file="${1?Input file missing}"
-filename="$(basename ${input_file})"
+filename=$(basename "${input_file}")
 filename="${filename%.*}"
 
 # make folders
@@ -51,4 +51,4 @@ cp /app/src/player.html "output/$filename/player.html"
 
 # Set permissions for newly created files and folders matching the video file's permissions
 echo -e "\nSetting permissions for all created files and folders & finishing"
-chown -R `stat -c "%u:%g" $input_file` output
+chown -R `stat -c "%u:%g" "${input_file}"` output
