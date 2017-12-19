@@ -3,13 +3,14 @@
 input_file="${1?Input file missing}"
 filename=$(basename "${input_file}")
 filename="${filename%.*}"
+frames=$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 "${input_file}")
 
 # make folders
-echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\n" && mkdir -p "output/${filename}" && \
+echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal # of frames: ${frames}\n" && mkdir -p "output/${filename}" && \
 
 echo -e "Creating MPEG-DASH files" && \
 # 1080p@CRF22
-echo -e "Creating Full HD version (no upscaling, Step 1/4)" && \
+echo -e "Total # of frames: ${frames}\n\nCreating Full HD version (no upscaling, Step 1/4)" && \
 ffmpeg -y -threads 4 -v error -stats -i "${input_file}" -an -c:v libx264 -x264opts 'keyint=24:min-keyint=24:no-scenecut' -profile:v high -level 4.0 -vf "scale=min'(1920,iw)':-4" -crf 22 -movflags faststart -write_tmcd 0 "output/${filename}/intermed_1080p.mp4" && \
 # 720p@CRF22
 echo -e "Creating HD version (no upscaling, Step 2/4)" && \
@@ -27,7 +28,7 @@ MP4Box -dash 2000 -rap -frag-rap -url-template -dash-profile onDemand -segment-n
 
 # Create HLS playlists for each quality level
 echo -e "\nCreating HLS files (needed for Safari on iOS, Safari on Mac is already compatible with MPEG-DASH files)" && \
-echo -e "Creating Full HD version (no upscaling, Step 1/4)" && \
+echo -e "Total # of frames: ${frames}\n\nCreating Full HD version (no upscaling, Step 1/4)" && \
 ffmpeg -v error -stats -i "output/${filename}/intermed_1080p.mp4" -i "output/${filename}/audio_128k.m4a" -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/${filename}/segment_1.m3u8" && \
 echo -e "Creating HD version (no upscaling, Step 2/4)" && \
 ffmpeg -v error -stats -i "output/${filename}/intermed_720p.mp4" -i "output/${filename}/audio_128k.m4a" -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/${filename}/segment_2.m3u8" && \
