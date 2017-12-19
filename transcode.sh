@@ -3,7 +3,7 @@
 input_file="${1?Input file missing}"
 filename=$(basename "${input_file}")
 filename="${filename%.*}"
-frames=$(ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of default=nokey=1:noprint_wrappers=1 "${input_file}")
+frames=$(ffprobe -v error -show_entries format=size -of default=noprint_wrappers=1:nokey=1 "${input_file}")
 
 # make folders
 echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nFrame Count: ${frames}\n" && mkdir -p "output/${filename}" && \
