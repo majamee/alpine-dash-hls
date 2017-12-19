@@ -35,4 +35,4 @@ cp /app/src/htaccess "output/$filename/.htaccess"
 cp /app/src/player.html "output/$filename/player.html"
 
 # Set permissions for newly created files and folders matching the video file's permissions
-chown -R `stat -c "%u:%g" $input_file` output
+chown -R `stat -c "%u:%g" "${input_file}"` output
