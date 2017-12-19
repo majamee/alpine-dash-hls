@@ -7,7 +7,7 @@ frames=$(ffprobe -v error -count_frames -select_streams v:0 -show_entries stream
 rappers=1 "${input_file}")
 
 # make folders
-echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nFrame Count: ${frames}" && mkdir -p "output/${filename}" && \
+echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nFrame Count: ${frames}\n" && mkdir -p "output/${filename}" && \
 
 echo -e "Creating MPEG-DASH files" && \
 # 1080p@CRF22
