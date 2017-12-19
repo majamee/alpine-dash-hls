@@ -3,9 +3,11 @@
 input_file="${1?Input file missing}"
 filename=$(basename "${input_file}")
 filename="${filename%.*}"
+frames=$(ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of default=nokey=1:noprint_w
+rappers=1 "${input_file}")
 
 # make folders
-echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\n" && mkdir -p "output/${filename}" && \
+echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nFrame Count: ${frames}" && mkdir -p "output/${filename}" && \
 
 echo -e "Creating MPEG-DASH files" && \
 # 1080p@CRF22
