@@ -13,7 +13,7 @@ docker run -v /absolute/path/to/video/:/video majamee/alpine-dash-hls name_of_my
 ```
 Please just replace in the command above the absolute path to your video file folder and the full file name of your video file to be converted.
 
-# Examplary toolchain usage
+## Examplary toolchain usage
 (Based on work of [squidpickles](https://github.com/squidpickles))
 
 Just use Kitematic to open the shared folder, place your video file in there, replace `"input.mkv"` in the commands below by your input video file (without `""`) and execute the shell commands subsequent into the Docker container.
@@ -45,12 +45,24 @@ Especially if someone has any input on integrating better [Apple's support of fr
 
 Suggestions welcome. :)
 
-# General hints for hosting the files (to test streaming)
+## General hints for hosting the files (to test streaming)
 * Video and playlist files should be hosted best via HTTPS
 * DASH requires the .mpd playlist to be set as `Content-Type: application/dash+xml`
 * No specific streaming server is required, but your hosting should have progressive downloading enabled
 * If using a different domain name for the video files compared to the page where the player is hosted CORS headers need to be set
 
-# Tools to test the generated files for streaming
+## Tools to test the generated files for streaming
 * HLS (e.g. Safari on Mac OS X): https://videojs.github.io/videojs-contrib-hls/ (use the .m3u8 master-playlist)
 * DASH (e.g. Firefox/ Chrome): http://reference.dashif.org/dash.js/ (use the latest released version & the .mpd playlist)
+
+# Features
+* Creates DASH (VOD) compatible files (including Safari on Mac)
+* Creates HLS files for compatibility with Safari on iOS
+* Optimizes video files for web playback (`moov` atom)
+* Compresses videos using H.264@CRF22 (for best compatibility)
+* Compress audio using AAC@128k (for DASH as separate track to save data)
+* Creates automatically 3 quality tiers (Full HD/ HD/ DVD quality)
+* Fragments video files in 2 second windows to allow dynamic quality switching based on available bandwidth
+* Creates master MPD-Playlist which connects everything (MPEG-DASH)
+* Creates master M3U8-Playlist for HLS
+* Adds HTML files for playback ready to be included into the own website into the `output` in a sub-folder matching the video file name next to all other created files
