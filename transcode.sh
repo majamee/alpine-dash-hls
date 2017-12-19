@@ -18,7 +18,7 @@ ffmpeg -y -threads 4 -v error -stats -i "${input_file}" -an -c:v libx264 -x264op
 echo -e "Creating DVD quality version (no upscaling, Step 3/4)" && \
 ffmpeg -y -threads 4 -v error -stats -i "${input_file}" -an -c:v libx264 -x264opts 'keyint=24:min-keyint=24:no-scenecut' -profile:v high -level 4.0 -vf "scale=min'(720,iw)':-4" -crf 22 -movflags faststart -write_tmcd 0 "output/${filename}/intermed_480p.mp4" && \
 # 128k AAC audio only
-echo -e "Creating audio only version (no upscaling, Step 4/4)" && \
+echo -e "Creating audio only version (Step 4/4)" && \
 ffmpeg -y -threads 4 -v error -stats -i "${input_file}" -vn -c:a aac -b:a 128k "output/${filename}/audio_128k.m4a" && \
 
 # Create MPEG-DASH files (segments & mpd-playlist)
@@ -26,14 +26,14 @@ echo -e "\nCreating MPEG-DASH files" && \
 MP4Box -dash 2000 -rap -frag-rap -url-template -dash-profile onDemand -segment-name 'segment_$RepresentationID$' -out "output/${filename}/playlist.mpd" "output/${filename}/intermed_1080p.mp4" "output/${filename}/intermed_720p.mp4" "output/${filename}/intermed_480p.mp4" "output/${filename}/audio_128k.m4a" && \
 
 # Create HLS playlists for each quality level
-echo -e "\nCreating HLS files (needed for Safari on iOS, Safari on Mac is already compatible with MPEG-DASH files" && \
+echo -e "\nCreating HLS files (needed for Safari on iOS, Safari on Mac is already compatible with MPEG-DASH files)" && \
 echo -e "Creating Full HD version (no upscaling, Step 1/4)" && \
 ffmpeg -v error -stats -i "output/${filename}/intermed_1080p.mp4" -i "output/${filename}/audio_128k.m4a" -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/${filename}/segment_1.m3u8" && \
 echo -e "Creating HD version (no upscaling, Step 2/4)" && \
 ffmpeg -v error -stats -i "output/${filename}/intermed_720p.mp4" -i "output/${filename}/audio_128k.m4a" -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/${filename}/segment_2.m3u8" && \
 echo -e "Creating DVD quality version (no upscaling, Step 3/4)" && \
 ffmpeg -v error -stats -i "output/${filename}/intermed_480p.mp4" -i "output/${filename}/audio_128k.m4a" -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/${filename}/segment_3.m3u8" && \
-echo -e "Creating audio only version (no upscaling, Step 4/4)" && \
+echo -e "Creating audio only version (Step 4/4)" && \
 ffmpeg -v error -stats -i "output/${filename}/audio_128k.m4a" -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/${filename}/segment_4.m3u8" && \
 
 # Transform MPD-Master-Playlist to M3U8-Master-Playlist
