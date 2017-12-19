@@ -22,7 +22,7 @@ echo -e "Creating audio only version (Step 4/4)" && \
 ffmpeg -y -threads 4 -v error -stats -i "${input_file}" -vn -c:a aac -b:a 128k "output/${filename}/audio_128k.m4a" && \
 
 # Create MPEG-DASH files (segments & mpd-playlist)
-echo -e "\nCreating MPEG-DASH files" && \
+echo -e "\nCreating MPEG-DASH files & MPD-playlist" && \
 MP4Box -dash 2000 -rap -frag-rap -url-template -dash-profile onDemand -segment-name 'segment_$RepresentationID$' -out "output/${filename}/playlist.mpd" "output/${filename}/intermed_1080p.mp4" "output/${filename}/intermed_720p.mp4" "output/${filename}/intermed_480p.mp4" "output/${filename}/audio_128k.m4a" && \
 
 # Create HLS playlists for each quality level
@@ -37,7 +37,7 @@ echo -e "Creating audio only version (Step 4/4)" && \
 ffmpeg -v error -stats -i "output/${filename}/audio_128k.m4a" -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/${filename}/segment_4.m3u8" && \
 
 # Transform MPD-Master-Playlist to M3U8-Master-Playlist
-echo -e "\nCreating master playerlist for HLS" && \
+echo -e "\nCreating master M3U8-playlist for HLS" && \
 xsltproc --stringparam run_id "segment" /app/mpd-to-m3u8/mpd_to_hls.xsl "output/${filename}/playlist.mpd" > "output/${filename}/playlist.m3u8" && \
 
 # Cleanup
