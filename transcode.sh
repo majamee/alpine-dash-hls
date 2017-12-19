@@ -14,7 +14,7 @@ ffmpeg -y -threads 4 -v error -stats -i "${input_file}" -an -c:v libx264 -x264op
 # 480p@CRF22
 ffmpeg -y -threads 4 -v error -stats -i "${input_file}" -an -c:v libx264 -x264opts 'keyint=24:min-keyint=24:no-scenecut' -profile:v high -level 4.0 -vf "scale=min'(720,iw)':-4" -crf 22 -movflags faststart -write_tmcd 0 "output/$filename/intermed_480p.mp4" && \
 # 128k AAC audio only
-ffmpeg -y -threads 4 -v error -stats -i "${input_file}" -vn -c:a aac -b:a 128k output/$filename/audio_128k.m4a && \
+ffmpeg -y -threads 4 -v error -stats -i "${input_file}" -vn -c:a aac -b:a 128k "output/$filename/audio_128k.m4a" && \
 
 # Create MPEG-DASH files (segments & mpd-playlist)
 MP4Box -dash 2000 -rap -frag-rap -url-template -dash-profile onDemand -segment-name 'segment_$RepresentationID$' -out output/$filename/playlist.mpd output/$filename/intermed_1080p.mp4 output/$filename/intermed_720p.mp4 output/$filename/intermed_480p.mp4 output/$filename/audio_128k.m4a && \
