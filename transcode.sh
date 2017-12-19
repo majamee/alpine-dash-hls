@@ -6,7 +6,7 @@ filename="${filename%.*}"
 frames=$(ffprobe -v error -show_entries format=size -of default=noprint_wrappers=1:nokey=1 "${input_file}")
 
 # make folders
-echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nFrame Count: ${frames}\n" && mkdir -p "output/${filename}" && \
+echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal # of frames: ${frames}\n" && mkdir -p "output/${filename}" && \
 
 echo -e "Creating MPEG-DASH files" && \
 # 1080p@CRF22
