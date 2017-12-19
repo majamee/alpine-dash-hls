@@ -37,6 +37,7 @@ RUN                buildDeps="build-base \
                    apk del ${buildDeps} && rm -rf /var/cache/apk/* && \
                    chmod +x /bin/transcode.sh
 
+COPY                ./src /app/src
 
 WORKDIR             /video
 ENTRYPOINT          ["/bin/transcode.sh"]
