@@ -2,30 +2,36 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>HLS Demo</title>
+    <title>HLS/Dash Demo Player</title>
+    <!-- This is using CDN hosted CSS and JS files from PLYR, HLS.js and Dash.js - you might want to replace these with copies on your own webspace if you don't trust those hosts and potetially to provide better performance as like this there are multiple DNS requests involved in loading and validating the files on each request -->
     <link rel="stylesheet" href="https://cdn.plyr.io/1.8.2/plyr.css">
   </head>
   <body>
+    <!-- You can refer to the PLYR documentation for options on this players tag -->
     <video preload="none" id="player" autoplay controls crossorigin></video>
+    <!-- This is using CDN hosted CSS and JS files from PLYR, HLS.js and Dash.js - you might want to replace these with copies on your own webspace if you don't trust those hosts and potetially to provide better performance as like this there are multiple DNS requests involved in loading and validating the files on each request -->
     <script src="https://cdn.plyr.io/1.8.2/plyr.js"></script>
     <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.js"></script>
     <script src="http://dashif.org/reference/players/javascript/nightly/dash.js/dist/dash.all.debug.js"></script>
     <script type="text/javascript">
         (function () {
-          var video = document.querySelector('#player');
+          var video = document.querySelector("#player");
+          /* If the player.html is not within the same directory as the generated files you will need to adjust the playlist.* strings with the path/url where the files are hosted */
+          var hlsPlaylist = "playlist.m3u8";
+          var mpdPlaylist = "playlist.mpd";
           
+          // Auto-Switch between HLS Support and DASH as Fallback
           if (Hls.isSupported()) {
             var hls = new Hls();
-            hls.loadSource('playlist.m3u8');
+            hls.loadSource(hlsPlaylist);
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED,function() {
               video.play();
             });
           }
           else {
-              var mpd = "playlist.mpd",
-              dash = dashjs.MediaPlayer().create()
-              dash.initialize(video, mpd, true);
+              var dash = dashjs.MediaPlayer().create()
+              dash.initialize(video, mpdPlaylist, true);
               plyr.setup(video);
           }
           
