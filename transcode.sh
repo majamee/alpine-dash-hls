@@ -20,9 +20,9 @@ ffmpeg -y -threads 4 -v error -stats -i "${input_file}" -vn -c:a aac -b:a 128k "
 MP4Box -dash 2000 -rap -frag-rap -url-template -dash-profile onDemand -segment-name 'segment_$RepresentationID$' -out "output/$filename/playlist.mpd" "output/$filename/intermed_1080p.mp4" "output/$filename/intermed_720p.mp4" "output/$filename/intermed_480p.mp4" "output/$filename/audio_128k.m4a" && \
 
 # Create HLS playlists for each quality level
-ffmpeg -v error -stats -i "output/$filename/intermed_1080p.mp4" -i output/$filename/audio_128k.m4a -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/$filename/segment_1.m3u8" && \
-ffmpeg -v error -stats -i "output/$filename/intermed_720p.mp4" -i output/$filename/audio_128k.m4a -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/$filename/segment_2.m3u8" && \
-ffmpeg -v error -stats -i "output/$filename/intermed_480p.mp4" -i output/$filename/audio_128k.m4a -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/$filename/segment_3.m3u8" && \
+ffmpeg -v error -stats -i "output/$filename/intermed_1080p.mp4" -i "output/$filename/audio_128k.m4a" -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/$filename/segment_1.m3u8" && \
+ffmpeg -v error -stats -i "output/$filename/intermed_720p.mp4" -i "output/$filename/audio_128k.m4a" -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/$filename/segment_2.m3u8" && \
+ffmpeg -v error -stats -i "output/$filename/intermed_480p.mp4" -i "output/$filename/audio_128k.m4a" -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/$filename/segment_3.m3u8" && \
 ffmpeg -v error -stats -i "output/$filename/audio_128k.m4a" -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/$filename/segment_4.m3u8" && \
 
 # Transform MPD-Master-Playlist to M3U8-Master-Playlist
