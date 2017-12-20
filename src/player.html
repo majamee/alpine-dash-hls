@@ -50,6 +50,9 @@
                 var hls = new Hls();
                 hls.loadSource(hlsPlaylist);
                 hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED,function() {
+                  video.play();
+                });
               });
           }
           //DASH Support?
