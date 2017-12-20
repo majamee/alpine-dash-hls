@@ -40,9 +40,11 @@
           var hlsLibrary = "https://cdn.jsdelivr.net/hls.js/latest/hls.js";
           //dash.js script ( https://github.com/Dash-Industry-Forum/dash.js/ ) -->
           var dashLibrary = "http://dashif.org/reference/players/javascript/nightly/dash.js/dist/dash.all.debug.js";
-
+          
+          window.MediaSource = window.MediaSource || window.WebKitMediaSource;
+          
           // Auto-Switch between HLS Support and DASH as Fallback
-          //HLS Support?
+          //HLS Support on MediaSource?
           if ( window.MediaSource &&
                typeof window.MediaSource.isTypeSupported === 'function' &&
                window.MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E,mp4a.40.2"') ) {
@@ -55,16 +57,20 @@
                 });
               });
           }
-          //DASH Support?
-          else if ( typeof ( window.MediaSource || window.WebKitMediaSource ) === "function" ) {
+          //DASH Support on MediaSource?
+          else if ( typeof window.MediaSource === "function" ) {
               JavaScript.load(dashLibrary, function() {
                 var dash = dashjs.MediaPlayer().create()
                 dash.initialize(video, mpdPlaylist, true);
                 plyr.setup(video);
               });
           }
+          //MP4 Support Natively? Yes? -> Probably fine with HLS Stream lets try that
+          else if (video.canPlayType('video/mp4; codecs="mp4v.20.8"')) {
+            video.src = hlsPlaylist;
+          }
           else {
-            //Neither HLS nor DASH are supported
+              // No Video...
           }
         })();
     </script>
