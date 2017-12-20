@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>HLS/Dash Demo Player</title>
-    
+
     <!-- This is using CDN hosted CSS and JS files from PLYR, HLS.js and Dash.js - you might want to replace these with copies on your own webspace if you don't trust those hosts and potetially to provide better performance as like this there are multiple DNS requests involved in loading and validating the files on each request -->
     <link rel="stylesheet" href="https://cdn.plyr.io/2.0.18/plyr.css">
-  
+
   </head>
   <body>
     <!-- You can refer to the PLYR documentation for options on this players tag -->
@@ -29,7 +29,7 @@
             document.getElementsByTagName('head')[0].appendChild(script);
           }
         };
-        
+
         (function () {
           var video = document.querySelector("#player");
           /* If the player.html is not within the same directory as the generated files you will need to adjust the playlist.* strings with the path/url where the files are hosted */
@@ -40,13 +40,12 @@
           var hlsLibrary = "https://cdn.jsdelivr.net/hls.js/latest/hls.js";
           //dash.js script ( https://github.com/Dash-Industry-Forum/dash.js/ ) -->
           var dashLibrary = "http://dashif.org/reference/players/javascript/nightly/dash.js/dist/dash.all.debug.js";
-          
+
           // Auto-Switch between HLS Support and DASH as Fallback
           //HLS Support?
-          if ( window.MediaSource && 
-               typeof window.MediaSource.isTypeSupported === 'function' && 
-               window.MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E,mp4a.40.2"' )
-          {
+          if ( window.MediaSource &&
+               typeof window.MediaSource.isTypeSupported === 'function' &&
+               window.MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E,mp4a.40.2"') ) {
               JavaScript.load(hlsLibrary, function() {
                 var hls = new Hls();
                 hls.loadSource(hlsPlaylist);
@@ -66,7 +65,7 @@
           }
         })();
     </script>
-    
+
     <!-- This is using CDN hosted CSS and JS files from PLYR, HLS.js and Dash.js - you might want to replace these with copies on your own webspace if you don't trust those hosts and potetially to provide better performance as like this there are multiple DNS requests involved in loading and validating the files on each request -->
     <!-- Plyr core script ( https://github.com/sampotts/plyr ) -->
     <script src="https://cdn.plyr.io/2.0.18/plyr.js"></script>
@@ -79,6 +78,6 @@
     <script>
         if (window.shr) { window.shr.setup({ count: { classname: 'btn__count' } }); }
     </script>
-    
+
   </body>
 </html>
