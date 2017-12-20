@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HLS/Dash Demo Player</title>
 
     <!-- This is using CDN hosted CSS and JS files from PLYR, HLS.js and Dash.js - you might want to replace these with copies on your own webspace if you don't trust those hosts and potetially to provide better performance as like this there are multiple DNS requests involved in loading and validating the files on each request -->
@@ -10,7 +11,7 @@
   </head>
   <body>
     <!-- You can refer to the PLYR documentation for options on this players tag -->
-    <video preload="none" id="player" width=600 height=300 controls crossorigin autoplay="false" clickToPlay="true"></video>
+    <video preload="none" id="player" controls crossorigin></video>
     <script type="text/javascript">
         // Dynamically load Javascript with Callback (https://gist.github.com/hagenburger/500716)
         var JavaScript = {
@@ -39,7 +40,7 @@
           //hls.js script ( https://github.com/video-dev/hls.js/ ) -->
           var hlsLibrary = "https://cdn.jsdelivr.net/hls.js/latest/hls.js";
           //dash.js script ( https://github.com/Dash-Industry-Forum/dash.js/ ) -->
-          var dashLibrary = "http://dashif.org/reference/players/javascript/nightly/dash.js/dist/dash.all.debug.js";
+          var dashLibrary = "http://cdn.dashjs.org/latest/dash.all.min.js";
           
           window.MediaSource = window.MediaSource || window.WebKitMediaSource;
           
