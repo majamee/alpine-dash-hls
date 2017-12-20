@@ -18,19 +18,27 @@
           var hlsPlaylist = "playlist.m3u8";
           var mpdPlaylist = "playlist.mpd";
           
-          // Auto-Switch between DASH Support and HLS as Fallback
-          if ( typeof ( window.MediaSource || window.WebKitMediaSource ) === "function" ) {
+          // Auto-Switch between HLS Support and DASH as Fallback
+          //HLS Support?
+          if ( window.MediaSource && 
+               typeof window.MediaSource.isTypeSupported === 'function' && 
+               window.MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E,mp4a.40.2"' )
+          {
+              var hls = new Hls();
+              hls.loadSource(hlsPlaylist);
+              hls.attachMedia(video);
+              hls.on(Hls.Events.MANIFEST_PARSED,function() {
+                video.play();
+              }); 
+          }
+          //DASH Support?
+          else if ( typeof ( window.MediaSource || window.WebKitMediaSource ) === "function" ) {
               var dash = dashjs.MediaPlayer().create()
               dash.initialize(video, mpdPlaylist, true);
               plyr.setup(video);
           }
-          else if (Hls.isSupported()) {
-            var hls = new Hls();
-            hls.loadSource(hlsPlaylist);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED,function() {
-              video.play();
-            }); 
+          else {
+            //Neither HLS nor DASH are supported
           }
         })();
     </script>
