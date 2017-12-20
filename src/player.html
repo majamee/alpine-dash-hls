@@ -23,7 +23,6 @@
               var dash = dashjs.MediaPlayer().create()
               dash.initialize(video, mpdPlaylist, true);
               plyr.setup(video);
-            });
           }
           else if (Hls.isSupported()) {
             var hls = new Hls();
@@ -31,10 +30,11 @@
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED,function() {
               video.play();
-          }         
+            }); 
+          }
         })();
     </script>
-  
+    
     <!-- This is using CDN hosted CSS and JS files from PLYR, HLS.js and Dash.js - you might want to replace these with copies on your own webspace if you don't trust those hosts and potetially to provide better performance as like this there are multiple DNS requests involved in loading and validating the files on each request -->
     <!-- Plyr core script ( https://github.com/sampotts/plyr ) -->
     <script src="https://cdn.plyr.io/2.0.18/plyr.js"></script>
