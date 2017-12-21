@@ -67,5 +67,5 @@ Suggestions welcome. :)
 * Creates master M3U8-Playlist for HLS
 * Creates all output files neatly stored in a sub-folder matching the video file name in the folder `output` next to the transcoded video file
 * Adds also HTML and `.htaccess` file including code ready for inclusion into the own website for playback next to all other created files
-* Included fallback player (`player.html`) is basing on the great work of the guys at [Plyr](https://plyr.io/) 
-* Included player (`index.html`) is basing on the great work of the guys at [Video.js](http://videojs.com/) 
+* Included fallback player (`player.html`) is based on the great work of the guys at [Plyr](https://plyr.io/) 
+* Included player (`index.html`) is based on the great work of the guys at [Video.js](http://videojs.com/) 
