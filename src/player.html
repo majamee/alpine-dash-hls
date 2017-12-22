@@ -1,87 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HLS/Dash Demo Player</title>
+<html lang="en">
 
-    <!-- This is using CDN hosted CSS and JS files from PLYR, HLS.js and Dash.js - you might want to replace these with copies on your own webspace if you don't trust those hosts and potetially to provide better performance as like this there are multiple DNS requests involved in loading and validating the files on each request -->
-    <link rel="stylesheet" href="https://cdn.plyr.io/2.0.18/plyr.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  </head>
-  <body>
-    <!-- You can refer to the PLYR documentation for options on this players tag -->
-    <video preload="none" id="player" controls crossorigin></video>
-    <script type="text/javascript">
-        // Dynamically load Javascript with Callback (https://gist.github.com/hagenburger/500716)
-        var JavaScript = {
-          load: function(src, callback) {
-            var script = document.createElement('script'),
-                loaded;
-            script.setAttribute('src', src);
-            if (callback) {
-              script.onreadystatechange = script.onload = function() {
-                if (!loaded) {
-                  callback();
-                }
-                loaded = true;
-              };
-            }
-            document.getElementsByTagName('head')[0].appendChild(script);
-          }
-        };
+  <link rel="stylesheet" href="https://unpkg.com/plyr/dist/plyr.css">
 
-        (function () {
-          var video = document.querySelector("#player");
-          /* If the player.html is not within the same directory as the generated files you will need to adjust the playlist.* strings with the path/url where the files are hosted */
-          var hlsPlaylist = "playlist.m3u8";
-          var mpdPlaylist = "playlist.mpd";
-          // This is using CDN hosted CSS and JS files from PLYR, HLS.js and Dash.js - you might want to replace these with copies on your own webspace if you don't trust those hosts and potetially to provide better performance as like this there are multiple DNS requests involved in loading and validating the files on each request
-          //hls.js script ( https://github.com/video-dev/hls.js/ ) -->
-          var hlsLibrary = "https://cdn.jsdelivr.net/hls.js/latest/hls.js";
-          //dash.js script ( https://github.com/Dash-Industry-Forum/dash.js/ ) -->
-          var dashLibrary = "http://cdn.dashjs.org/latest/dash.all.min.js";
-          
-          window.MediaSource = window.MediaSource || window.WebKitMediaSource;
-          
-          // Auto-Switch between HLS Support and DASH as Fallback
-          //HLS Support on MediaSource?
-          if ( window.MediaSource &&
-               typeof window.MediaSource.isTypeSupported === 'function' &&
-               window.MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E,mp4a.40.2"') ) {
-              JavaScript.load(hlsLibrary, function() {
-                var hls = new Hls();
-                hls.loadSource(hlsPlaylist);
-                hls.attachMedia(video);
-                hls.on(Hls.Events.MANIFEST_PARSED,function() {
-                  video.play();
-                });
-              });
-          }
-          //DASH Support on MediaSource?
-          else if ( typeof window.MediaSource === "function" ) {
-              JavaScript.load(dashLibrary, function() {
-                var dash = dashjs.MediaPlayer().create()
-                dash.initialize(video, mpdPlaylist, true);
-                plyr.setup(video);
-              });
-          }
-          //MP4 Support Natively? Yes? -> Probably fine with HLS Stream lets try that
-          else if (video.canPlayType('video/mp4; codecs="mp4v.20.8"')) {
-            video.src = hlsPlaylist;
-          }
-          else {
-              // No Video...
-          }
-        })();
-    </script>
+  <style>
+    .starter-template {
+      padding: 20px 20px;
+      text-align: center;
+    }
+  </style>
 
-    <!-- This is using CDN hosted CSS and JS files from PLYR, HLS.js and Dash.js - you might want to replace these with copies on your own webspace if you don't trust those hosts and potetially to provide better performance as like this there are multiple DNS requests involved in loading and validating the files on each request -->
-    <!-- Plyr core script ( https://github.com/sampotts/plyr ) -->
-    <script src="https://cdn.plyr.io/2.0.18/plyr.js"></script>
+  <title>Auto-DASH-HLS Plyr Player</title>
+</head>
 
-    <!-- Rangetouch to fix <input type="range"> on touch devices ( https://rangetouch.com ) -->
-    <script src="https://cdn.rangetouch.com/1.0.5/rangetouch.js" async></script>
+<body>
+  <section class="starter-template">
+    <video id="player" controls>
+      <source src="playlist.m3u8" type="application/x-mpegURL">
+    </video>
+  </section>
 
-  </body>
+  <!-- Include plyr.js abd dash.js in your page -->
+  <script src="https://unpkg.com/plyr/dist/plyr.js"></script>
+  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+  <!-- Rangetouch to fix <input type="range"> on touch devices (see https://rangetouch.com) -->
+  <script src="https://unpkg.com/rangetouch/src/js/rangetouch.js" async></script>
+
+  <script>
+    video = document.querySelector('#player');
+    if ( typeof ( window.MediaSource || window.WebKitMediaSource ) === "function" ) {
+      (function () {
+        var mpd = "playlist.mpd",
+            dash = dashjs.MediaPlayer().create();
+
+        dash.initialize(video, mpd, false);
+      })();
+    }
+    plyr.setup(video);
+  </script>
+</body>
+
 </html>
