@@ -7,19 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
-  
-  <style>
-    .starter-template {
-      padding: 20px 20px;
-      text-align: center;
-    }
-  </style>
 
   <title>Auto-DASH-HLS VideoJS Player</title>
 </head>
 
 <body>
-  <section class="starter-template">
+  <main role="main" id="main">
     <video id="example-video" class="video-js vjs-default-skin vjs-fluid" controls>
       <source src="playlist.m3u8" type="application/x-mpegURL">
       <p class="vjs-no-js">
@@ -27,7 +20,7 @@
       <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
     </p>
     </video>
-  </section>
+  </main>
 
   <!-- Include video.js, dash.js, and videojs-contrib-dash in your page -->
   <script src="https://unpkg.com/video.js/dist/video.js"></script>
