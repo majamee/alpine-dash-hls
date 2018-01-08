@@ -69,3 +69,6 @@ Suggestions welcome. :)
 * Adds also HTML and `.htaccess` file including code ready for inclusion into the own website for playback next to all other created files
 * Included fallback player (`plyr.html`) is based on the great work of the guys at [Plyr](https://plyr.io/) 
 * Included player (`index.html`) is based on the great work of the guys at [Video.js](http://videojs.com/) 
+
+# Tip
+--> For creating DASH/ HLS compatible files for multiple videos in one run, please have a look at: https://majamee.github.io/auto-dash-hls/
