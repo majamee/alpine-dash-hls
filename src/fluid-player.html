@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdn.fluidplayer.com/current/fluidplayer.min.css">
+
+  <title>Auto-DASH-HLS Fluid-Player</title>
+</head>
+
+<body>
+  <main role="main" id="main">
+    <video id="player" controls width="100%">
+      <source src="playlist.m3u8" type="application/x-mpegURL">
+    </video>
+  </main>
+
+  <!-- Include fluidplayer.js and dash.js in your page -->
+  <script src="https://cdn.fluidplayer.com/current/fluidplayer.min.js"></script>
+  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+
+  <script>
+    video = document.querySelector('#player');
+    if ( typeof ( window.MediaSource || window.WebKitMediaSource ) === "function" ) {
+      (function () {
+        var mpd = "playlist.mpd",
+            dash = dashjs.MediaPlayer().create();
+
+        dash.initialize(video, mpd, false);
+      })();
+    }
+    var testVideo = fluidPlayer('player');
+  </script>
+</body>
+
+</html>
