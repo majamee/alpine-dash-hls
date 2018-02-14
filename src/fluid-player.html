@@ -31,8 +31,17 @@
         dash.initialize(video, mpd, false);
       })();
     }
-    var testVideo = fluidPlayer('player');
+    var testVideo = fluidPlayer(
+      'player',
+      {
+        layout: 'default',
+        responsive: true
+      }
+    );
   </script>
+
+  <!-- Add some spacing at the bottom, <br> elements can safely be removed though -->
+  <br><br><br>
 </body>
 
 </html>
