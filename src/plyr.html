@@ -5,23 +5,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="https://unpkg.com/plyr/dist/plyr.css">
+  <!-- Using latest version 2.x until 3.x becomes stable -->
+  <link rel="stylesheet" href="https://unpkg.com/plyr@2/dist/plyr.css">
 
   <title>Auto-DASH-HLS Plyr Player</title>
 </head>
 
 <body>
   <main role="main" id="main">
-    <video id="player" controls>
+    <video id="player" controls playsinline>
       <source src="playlist.m3u8" type="application/x-mpegURL">
     </video>
   </main>
 
   <!-- Include plyr.js and dash.js in your page -->
-  <script src="https://unpkg.com/plyr/dist/plyr.js"></script>
+  <!-- Using latest version 2.x until 3.x becomes stable -->
+  <script src="https://unpkg.com/plyr@2/dist/plyr.js"></script>
   <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
   <!-- Rangetouch to fix <input type="range"> on touch devices (see https://rangetouch.com) -->
   <script src="https://unpkg.com/rangetouch/src/js/rangetouch.js" async></script>
+  <!-- Polyfills -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent"></script>
 
   <script>
     video = document.querySelector('#player');
@@ -35,7 +39,7 @@
     }
     plyr.setup(video);
   </script>
-  
+
   <!-- Add some spacing at the bottom, <br> elements can safely be removed though -->
   <br><br><br>
 </body>
