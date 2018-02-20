@@ -1,14 +1,14 @@
-[![](https://images.microbadger.com/badges/version/majamee/alpine-dash-hls.svg)](https://microbadger.com/images/majamee/alpine-dash-hls) [![](https://images.microbadger.com/badges/image/majamee/alpine-dash-hls.svg)](https://microbadger.com/images/majamee/alpine-dash-hls) | 
-[![Docker Automated build](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)]() [![Docker Build Status](https://img.shields.io/docker/build/majamee/alpine-dash-hls.svg)]() | 
-[![Docker Stars](https://img.shields.io/docker/stars/majamee/alpine-dash-hls.svg?style=social)]() [![Docker Pulls](https://img.shields.io/docker/pulls/majamee/alpine-dash-hls.svg?style=social)]()
+[![](https://images.microbadger.com/badges/version/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://images.microbadger.com/badges/image/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) | 
+[![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) | 
+[![](https://img.shields.io/docker/stars/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/pulls/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank)
 
 # alpine-dash-hls
 A ready-prepared video transcoding pipeline to create DASH/ HLS compatible video files &amp; playlists.
 
-Recommended usage via Docker [Kitematic](https://kitematic.com/) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/).
+Recommended usage via Docker [Kitematic](https://kitematic.com/?target=_blank) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank).
 
 # Simplified usage (run in shell/ terminal/ cmd)
-Prerequisite: [Docker](https://www.docker.com/) needs to be installed and running.
+Prerequisite: [Docker](https://www.docker.com/?target=_blank) needs to be installed and running.
 ```sh
 docker pull majamee/alpine-dash-hls
 docker run -v /absolute/path/to/video/:/video majamee/alpine-dash-hls name_of_my_video_file.ext
@@ -16,7 +16,7 @@ docker run -v /absolute/path/to/video/:/video majamee/alpine-dash-hls name_of_my
 Please just replace in the command above the absolute path to your video file folder and the full file name of your video file to be converted.
 
 ## Examplary toolchain usage
-(Based on work of [squidpickles](https://github.com/squidpickles))
+(Based on work of [squidpickles](https://github.com/squidpickles?target=_blank))
 
 Just use Kitematic to open the shared folder, place your video file in there, replace `"input.mkv"` in the commands below by your input video file (without `""`) and execute the shell commands subsequent into the Docker container.
 ```sh
@@ -58,6 +58,7 @@ Suggestions welcome. :)
 * DASH (e.g. Firefox/ Chrome): http://reference.dashif.org/dash.js/ (use the latest released version & the .mpd playlist)
 
 # Features
+* Supported devices: iOS (Chrome/ Firefox/ Safari), Android (Chrome/ Firefox), Mac (Chrome/ Firefox/ Safari), Windows (Chrome/ Firefox/ EDGE)
 * Creates DASH (VOD) compatible files (including Safari on Mac)
 * Creates HLS files for compatibility with Safari on iOS
 * Optimizes video files for web playback (`moov` atom)
@@ -69,10 +70,10 @@ Suggestions welcome. :)
 * Creates master M3U8-Playlist for HLS
 * Creates all output files neatly stored in a sub-folder matching the video file name in the folder `output` next to the transcoded video file
 * Adds also HTML and `.htaccess` file including code ready for inclusion into the own website for playback next to all other created files
-* Included fallback player (`plyr.html`) is based on the great work of the guys at [Plyr](https://plyr.io/) 
-* Included second fallback player (`fluid-player.html`) is based on the great work of the guys at [Fluid Player](https://github.com/fluid-player/fluid-player) 
-* Included player (`index.html`) is based on the great work of the guys at [Video.js](http://videojs.com/) 
+* Included fallback player (`plyr.html`) is based on the great work of the guys at [Plyr](https://plyr.io/?target=_blank) 
+* Included second fallback player (`fluid-player.html`) is based on the great work of the guys at [Fluid Player](https://www.fluidplayer.com/?target=_blank) 
+* Included player (`index.html`) is based on the great work of the guys at [Video.js](http://videojs.com/?target=_blank) 
 
 # Tip
 For creating DASH/ HLS compatible files for multiple videos in a single run, please have a look at: 
-[https://majamee.github.io/auto-dash-hls/](https://majamee.github.io/auto-dash-hls/)
+* [https://majamee.github.io/auto-dash-hls/](https://majamee.github.io/auto-dash-hls/?target=_blank)
