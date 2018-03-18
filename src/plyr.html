@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Using latest version 2.x until 3.x becomes stable -->
-  <link rel="stylesheet" href="https://unpkg.com/plyr@2/dist/plyr.css">
+  <!-- Using latest stable version 3.x -->
+  <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
 
   <title>Auto-DASH-HLS Plyr Player</title>
 </head>
@@ -19,8 +19,8 @@
   </main>
 
   <!-- Include plyr.js and dash.js in your page -->
-  <!-- Using latest version 2.x until 3.x becomes stable -->
-  <script src="https://unpkg.com/plyr@2/dist/plyr.js"></script>
+  <!-- Using latest stable version 3.x -->
+  <script src="https://unpkg.com/plyr@3/dist/plyr.js"></script>
   <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
   <!-- Rangetouch to fix <input type="range"> on touch devices (see https://rangetouch.com) -->
   <script src="https://unpkg.com/rangetouch/src/js/rangetouch.js" async></script>
@@ -37,7 +37,10 @@
         dash.initialize(video, mpd, false);
       })();
     }
-    plyr.setup(video);
+    const player = new Plyr('#player', {
+      /* options */
+      "fullscreen": { enabled: true, fallback: true, iosNative: true }
+    });
   </script>
 
 </body>
