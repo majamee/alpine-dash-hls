@@ -12,7 +12,7 @@
 
 <body>
   <main role="main" id="main">
-    <video id="player" controls width="100%">
+    <video id="player" controls>
       <source src="playlist.m3u8" type="application/x-mpegURL">
     </video>
   </main>
@@ -34,8 +34,12 @@
     var testVideo = fluidPlayer(
       'player',
       {
-        layout: 'default',
-        responsive: true
+        layoutControls: {
+          /* theme */
+          layout: 'default',
+          /* enable responsive behavior */
+          fillToContainer: true // Default true
+        }
       }
     );
   </script>
