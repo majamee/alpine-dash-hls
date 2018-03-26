@@ -52,32 +52,34 @@
   <script>
     'use strict';
     angular.module('myApp',
-    		[
-    			"ngSanitize",
-    			"com.2fdevs.videogular",
-    			"com.2fdevs.videogular.plugins.controls",
-    			"com.2fdevs.videogular.plugins.overlayplay",
-    			"com.2fdevs.videogular.plugins.poster",
-    			"com.2fdevs.videogular.plugins.dash"
-    		]
-    	)
-    	.controller('HomeCtrl',
-    		["$sce", function ($sce) {
-    			this.config = {
+        [
+          "ngSanitize",
+          "com.2fdevs.videogular",
+          "com.2fdevs.videogular.plugins.controls",
+          "com.2fdevs.videogular.plugins.overlayplay",
+          "com.2fdevs.videogular.plugins.poster",
+          "com.2fdevs.videogular.plugins.dash"
+        ]
+      )
+      .controller('HomeCtrl',
+        ["$sce", function ($sce) {
+          this.config = {
             /* Videogular player options */
             autoplay: false,
             sources: [
-    				  {src: "playlist.mpd"}
-    				],
-            theme: {url: "https://unpkg.com/videogular/dist/themes/default/videogular.min.css"},
+              {src: "playlist.mpd", type: "application/dash+xml"},
+              {src: "playlist.m3u8", type: "application/x-mpegURL"}
+            ],
+            theme: {
+              url: "https://unpkg.com/videogular/dist/themes/default/videogular.min.css"
+            },
             plugins: {
                 /* Insert here url or path to preview image for video */
                 poster: ""
             }
-    			};
-    		}
-       ]
-    	);
+          };
+        }]
+      );
   </script>
 
 </body>
