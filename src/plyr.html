@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Using latest stable version 3.x -->
+  <!-- Using latest stable Plyr version 3.x styling -->
   <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
 
   <title>Auto-DASH-HLS Plyr Player</title>
@@ -14,7 +14,11 @@
 <body>
   <main role="main" id="main">
     <video id="player" controls>
+      <!-- HLS-Playlist location -->
       <source src="playlist.m3u8" type="application/x-mpegURL">
+        <p>
+          To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.
+        </p>
     </video>
   </main>
 
@@ -29,16 +33,19 @@
 
   <script>
     video = document.querySelector('#player');
+    /* Switch to DASH-Stream, if supported */
     if ( typeof ( window.MediaSource || window.WebKitMediaSource ) === "function" ) {
       (function () {
+        /* DASH-Playlist location */
         var mpd = "playlist.mpd",
             dash = dashjs.MediaPlayer().create();
 
         dash.initialize(video, mpd, false);
       })();
-    }
+    };
+    /* Initialize Plyr Player */
     const player = new Plyr('#player', {
-      /* options */
+      /* Options */
       "fullscreen": { enabled: true, fallback: true, iosNative: true }
     });
   </script>
