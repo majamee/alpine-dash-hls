@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Using latest stable Fluid Player version 2.x styling -->
   <link rel="stylesheet" href="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.css">
 
   <title>Auto-DASH-HLS Fluid-Player</title>
@@ -13,7 +14,13 @@
 <body>
   <main role="main" id="main">
     <video id="player" controls>
+      <!-- DASH-Playlist location -->
+      <source src="playlist.mpd" type="application/dash+xml">
+      <!-- HLS-Playlist location -->
       <source src="playlist.m3u8" type="application/x-mpegURL">
+      <p>
+        To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.
+      </p>
     </video>
   </main>
 
@@ -22,17 +29,11 @@
   <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
 
   <script>
+    /* Initialize Fluid Player */
     video = document.querySelector('#player');
-    if ( typeof ( window.MediaSource || window.WebKitMediaSource ) === "function" ) {
-      (function () {
-        var mpd = "playlist.mpd",
-            dash = dashjs.MediaPlayer().create();
-
-        dash.initialize(video, mpd, false);
-      })();
-    }
     fluidPlayer(
       'player',
+      /* Options */
       {
         layoutControls: {
           /* theme */
