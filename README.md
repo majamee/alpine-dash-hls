@@ -2,7 +2,7 @@
 [![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) | 
 [![](https://img.shields.io/docker/stars/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/pulls/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank)
 
-<p align="center"><a href="http://alpine-dash-hls.gq/"><img src="http://alpine-dash-hls.gq/user/images/g5_hydrogen/g5_hydrogen/ADH-logo-alphab.png" alt="Alpine Dash HLS" width="400px"></a></p>
+![Alpine Dash HLS - Simple Stream Videos](http://majamee.000webhostapp.com/user/images/ADH-logo-alphat.png)
 
 # alpine-dash-hls
 A ready-prepared video transcoding pipeline to create DASH/ HLS compatible video files &amp; playlists.
