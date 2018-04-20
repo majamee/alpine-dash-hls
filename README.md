@@ -12,8 +12,8 @@ Recommended usage via Docker [Kitematic](https://kitematic.com/?target=_blank) &
 # Simplified usage (run in shell/ terminal/ cmd)
 Prerequisite: [Docker](https://www.docker.com/?target=_blank) needs to be installed and running.
 ```sh
-docker pull majamee/alpine-dash-hls
-docker run -v /absolute/path/to/video/:/video majamee/alpine-dash-hls name_of_my_video_file.ext
+docker pull majamee/alpine-dash-hls:edge
+docker run -v /absolute/path/to/video/:/video majamee/alpine-dash-hls:edge name_of_my_video_file.ext
 ```
 Please just replace in the command above the absolute path to your video file folder and the full file name of your video file to be converted.
 
