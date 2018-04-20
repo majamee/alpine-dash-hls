@@ -16,7 +16,7 @@ docker pull majamee/alpine-dash-hls
 docker run -v /absolute/path/to/video/:/video majamee/alpine-dash-hls name_of_my_video_file.ext
 ```
 Please just replace in the command above the absolute path to your video file folder and the full file name of your video file to be converted.
-You can also use [tags](https://hub.docker.com/r/majamee/alpine-dash-hls/tags/) like `majamee/alpine-dash-hls:edge` (e.g. uses alpine's edge version as base).
+You can also use [tags](https://hub.docker.com/r/majamee/alpine-dash-hls/tags/) like `majamee/alpine-dash-hls:edge` (e.g. uses [alpine](https://hub.docker.com/_/alpine/)'s edge version as base).
 
 ## Examplary toolchain usage
 (Based on work of [squidpickles](https://github.com/squidpickles?target=_blank))
