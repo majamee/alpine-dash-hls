@@ -2,7 +2,9 @@
 [![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) | 
 [![](https://img.shields.io/docker/stars/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/pulls/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank)
 
-# alpine-dash-hls
+![Alpine Dash HLS - Simple Stream Videos](http://majamee.000webhostapp.com/user/images/ADH-logo-alphatest.png)
+
+# [Alpine Dash HLS](http://alpine-dash-hls.gq/)
 A ready-prepared video transcoding pipeline to create DASH/ HLS compatible video files &amp; playlists.
 
 Recommended usage via Docker [Kitematic](https://kitematic.com/?target=_blank) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank).
@@ -14,6 +16,7 @@ docker pull majamee/alpine-dash-hls
 docker run -v /absolute/path/to/video/:/video majamee/alpine-dash-hls name_of_my_video_file.ext
 ```
 Please just replace in the command above the absolute path to your video file folder and the full file name of your video file to be converted.
+You can also use [tags](https://hub.docker.com/r/majamee/alpine-dash-hls/tags/) like `majamee/alpine-dash-hls:edge` (e.g. uses [alpine](https://hub.docker.com/_/alpine/)'s edge version as base).
 
 ## Examplary toolchain usage
 (Based on work of [squidpickles](https://github.com/squidpickles?target=_blank))
