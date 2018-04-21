@@ -1,5 +1,5 @@
-[![](https://images.microbadger.com/badges/version/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://images.microbadger.com/badges/image/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) | 
-[![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) | 
+[![](https://images.microbadger.com/badges/version/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://images.microbadger.com/badges/image/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) |
+[![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) |
 [![](https://img.shields.io/docker/stars/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/pulls/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank)
 
 ![Alpine Dash HLS - Simple Stream Videos](http://majamee.000webhostapp.com/user/images/ADH-logo-alphatest.png)
@@ -16,6 +16,7 @@ docker pull majamee/alpine-dash-hls
 docker run -v /absolute/path/to/video/:/video majamee/alpine-dash-hls name_of_my_video_file.ext
 ```
 Please just replace in the command above the absolute path to your video file folder and the full file name of your video file to be converted.
+You can also use [tags](https://hub.docker.com/r/majamee/alpine-dash-hls/tags/) like `majamee/alpine-dash-hls:edge` (e.g. uses [alpine](https://hub.docker.com/_/alpine/)'s edge version as base).
 
 ## Examplary toolchain usage
 (Based on work of [squidpickles](https://github.com/squidpickles?target=_blank))
@@ -44,7 +45,7 @@ ffmpeg -y -threads 0 -i audio_128k.m4a -acodec copy -vcodec copy -hls_time 2 -hl
 xsltproc --stringparam run_id "segment" /app/mpd-to-m3u8/mpd_to_hls.xsl playlist.mpd > playlist.m3u8
 ```
 
-I am glad to receive any improvement ideas about this "any video to DASH/ HLS" pipeline. 
+I am glad to receive any improvement ideas about this "any video to DASH/ HLS" pipeline.
 Especially if someone has any input on integrating better [Apple's support of fragemented mp4 (fmp4) files](https://gpac.wp.imt.fr/tag/hls-fmp4/) in this pipeline.
 
 Suggestions welcome. :)
@@ -72,13 +73,13 @@ Suggestions welcome. :)
 * Creates master M3U8-Playlist for HLS
 * Creates all output files neatly stored in a sub-folder matching the video file name in the folder `output` next to the transcoded video file
 * Adds also HTML and `.htaccess` file including code ready for inclusion into the own website for playback next to all other created files
-* Included fallback player (`plyr.html`) is based on the great work of the devs at [Plyr](https://plyr.io/?target=_blank) 
-* Included second fallback player (`fluid-player.html`) is based on the great work of the devs at [Fluid Player](https://www.fluidplayer.com/?target=_blank) 
-* Included third fallback player (`videogular.html`) is based on the great work of the devs at [Videogular](http://www.videogular.com/?target=_blank) 
-* Included player (`index.html`) is based on the great work of the guys at [Video.js](http://videojs.com/?target=_blank) 
+* Included fallback player (`plyr.html`) is based on the great work of the devs at [Plyr](https://plyr.io/?target=_blank)
+* Included second fallback player (`fluid-player.html`) is based on the great work of the devs at [Fluid Player](https://www.fluidplayer.com/?target=_blank)
+* Included third fallback player (`videogular.html`) is based on the great work of the devs at [Videogular](http://www.videogular.com/?target=_blank)
+* Included player (`index.html`) is based on the great work of the guys at [Video.js](http://videojs.com/?target=_blank)
 
 # Tip
-For creating DASH/ HLS compatible files for multiple videos in a single run, please have a look at: 
+For creating DASH/ HLS compatible files for multiple videos in a single run, please have a look at:
 * [https://majamee.github.io/auto-dash-hls/](https://majamee.github.io/auto-dash-hls/?target=_blank)
 
 # Demo
