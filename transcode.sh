@@ -6,7 +6,7 @@ filename="${filename%.*}"
 frames=$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 "${input_file}")
 
 # make folders
-echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal # of frames: ${frames}\n" && mkdir -p "output/${filename}" && \
+echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal # of frames: ${frames}\n" && mkdir -p "output/${filename}/thumbnails" && \
 
 echo -e "Creating MPEG-DASH files" && \
 # 1080p@CRF22
@@ -36,6 +36,10 @@ echo -e "Creating DVD quality version (no upscaling, Step 3/4)" && \
 ffmpeg -y -threads 0 -v error -stats -i "output/${filename}/intermed_480p.mp4" -i "output/${filename}/audio_128k.m4a" -map 0:v:0 -map 1:a:0 -shortest -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/${filename}/segment_3.m3u8" && \
 echo -e "Creating audio only version (Step 4/4)" && \
 ffmpeg -y -threads 0 -v error -stats -i "output/${filename}/audio_128k.m4a" -acodec copy -vcodec copy -hls_time 2 -hls_list_size 0 -hls_flags single_file "output/${filename}/segment_4.m3u8" && \
+
+# Create Video Preview thumbnails (1/10 seconds)
+echo -e "\nCreating video preview thumbnails" && \
+ffmpeg -y -threads 0 -v error -i "${input_file}" -r 1/10 -vf scale=-1:120 -vcodec png "output/${filename}/thumbnails/thumbnail-%02d.png"
 
 # Transform MPD-Master-Playlist to M3U8-Master-Playlist
 echo -e "\nCreating master M3U8-playlist for HLS" && \
