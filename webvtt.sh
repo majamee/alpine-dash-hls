@@ -74,5 +74,5 @@ do
   n=$((n+thumbnail_timewindow));
 done < thumbnails.tmp
 
-sed -i '1 i\WEBVTT' thumbnails.vtt
 rm -f thumbnails.tmp;
+sed -i '1 i\WEBVTT' thumbnails.vtt
