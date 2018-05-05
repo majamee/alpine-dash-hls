@@ -51,7 +51,7 @@ s2=0
 
 shopt -s nullglob;
 
-cd /video/"${directoryname}";
+cd "${directoryname}";
 # writing thumbnail image names into file
 ls *.png > thumbnails.tmp;
 # inserting matching WEBVTT timestamps for the preview images
