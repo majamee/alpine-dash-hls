@@ -54,7 +54,7 @@ shopt -s nullglob;
 cd /video/"${directoryname}";
 # writing thumbnail image names into file
 ls *.png > thumbnails.tmp;
-# inserting matching timestamps for the preview images
+# inserting matching WEBVTT timestamps for the preview images
 rm -f thumbnails.vtt;
 while read line
 do
@@ -74,5 +74,8 @@ do
   n=$((n+thumbnail_timewindow));
 done < thumbnails.tmp
 
+# Append line-feed at the end of thumbnails.vtt file
+echo >> thumbnails.vtt;
 rm -f thumbnails.tmp;
+# Insert new line "WEBVTT" at the start of thumbnails.vtt file
 sed -i '1 i\WEBVTT' thumbnails.vtt

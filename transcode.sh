@@ -11,8 +11,8 @@ echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal 
 
 # Create Video Preview thumbnails (1/10 seconds)
 echo -e "\nCreating video preview thumbnails (1/10 seconds)" && \
-ffmpeg -y -v error -i "${input_file}" -r 1/10 -vf scale=-1:120 -vcodec png "output/${filename}/thumbnails/thumbnail-%02d.png" && \
-rm -f "output/${filename}/thumbnails/thumbnail-01.png";
+ffmpeg -y -v error -i "${input_file}" -r 1/10 -vf scale=-1:120 -vcodec png "output/${filename}/thumbnails/thumbnail%02d.png" && \
+rm -f "output/${filename}/thumbnails/thumbnail01.png";
 /bin/webvtt.sh "output/${filename}/thumbnails";
 
 echo -e "\nCreating MPEG-DASH files" && \
@@ -50,16 +50,16 @@ xsltproc --stringparam run_id "segment" /app/mpd-to-m3u8/mpd_to_hls.xsl "output/
 
 # Cleanup
 echo -e "\nCleanup of intermediary files" && \
-rm "output/${filename}/intermed_1080p.mp4" "output/${filename}/intermed_720p.mp4" "output/${filename}/intermed_480p.mp4" "output/${filename}/audio_128k.m4a"
+rm "output/${filename}/intermed_1080p.mp4" "output/${filename}/intermed_720p.mp4" "output/${filename}/intermed_480p.mp4" "output/${filename}/audio_128k.m4a";
 
 # Add HTML code for easy inclusion in website
-echo -e "\nAdd HTML files for playback to output folder"
-cp /app/src/htaccess "output/${filename}/.htaccess"
-cp /app/src/index.html "output/${filename}/index.html"
-cp /app/src/plyr.html "output/${filename}/plyr.html"
-cp /app/src/fluid-player.html "output/${filename}/fluid-player.html"
-cp /app/src/videogular.html "output/${filename}/videogular.html"
+echo -e "\nAdd HTML files for playback to output folder";
+cp /app/src/htaccess "output/${filename}/.htaccess";
+cp /app/src/index.html "output/${filename}/index.html";
+cp /app/src/plyr.html "output/${filename}/plyr.html";
+cp /app/src/fluid-player.html "output/${filename}/fluid-player.html";
+cp /app/src/videogular.html "output/${filename}/videogular.html";
 
 # Set permissions for newly created files and folders matching the video file's permissions
-echo -e "\nSetting permissions for all created files and folders & finishing"
-chown -R `stat -c "%u:%g" "${input_file}"` output
+echo -e "\nSetting permissions for all created files and folders & finishing";
+chown -R `stat -c "%u:%g" "${input_file}"` output;
