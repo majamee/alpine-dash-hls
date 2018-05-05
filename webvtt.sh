@@ -53,9 +53,9 @@ shopt -s nullglob;
 
 cd /video/"${directoryname}";
 # writing thumbnail image names into file
-ls *.png > thumbnails.vtt;
-# inserting matching timestamps for the preview images - ToDo
-sed -i "/thumbnail/ { s/thumbnail/\n#\n&/ }" thumbnails.vtt
+ls *.png > thumbnails.tmp;
+# inserting matching timestamps for the preview images
+rm -f thumbnails.vtt;
 while read line
 do
   h1=$(( n / 3600 ));
@@ -70,30 +70,9 @@ do
   printf -v m2 "%02d" $m2;
   s2=$(( ( n + thumbnail_timewindow ) % 60 ));
   printf -v s2 "%02d" $s2;
-  echo $line|sed -e "/thumbnail/ { s/thumbnail/\n$h1:$m1:$s1.000 --> $h2:$m2:$s2.000\n&/ }" >> web.vtt;
+  echo $line|sed -e "/thumbnail/ { s/thumbnail/\n$h1:$m1:$s1.000 --> $h2:$m2:$s2.000\n&/ }" >> thumbnails.vtt;
   n=$((n+thumbnail_timewindow));
-done < thumbnails.vtt
+done < thumbnails.tmp
 
-# for file in *
-# do
-#     if ( [ -d "${file}" ] && [ "${file}" != "output" ] ); then
-#         /bin/webvtt.sh "${1}/${file}";
-#     else
-#         if ( [ ${file: -4} == ".png" ] ); then
-#             if grep -Fxq "${file}" /video/.auto-dash-hls
-#             then
-#                 echo -e "${On_Light_Blue}${file} already optimized in previous run. Skipping${Color_Off}";
-#                 continue
-#             fi
-#
-#             echo -e "${On_Yellow}${Bold}${file} ${Bold_Off}being transcoded now! Please be patient.${Color_Off}";
-#             /bin/transcode.sh "${file}";
-#             if [ ${PIPESTATUS[0]} -eq 0 ]; then
-#                 echo "${file}" >> /video/.auto-dash-hls;
-#                 echo -e "${On_Green}DASH/ HLS compatible files generation for ${Bold}${file} ${Bold_Off}successfully completed${Color_Off}\n";
-#             else
-#                 echo -e "${On_Light_Red}Optimizing file ${file} failed. Skipping${Color_Off}";
-#             fi
-#         fi
-#     fi
-# done
+sed -i '1 i\WEBVTT' thumbnails.vtt
+rm -f thumbnails.tmp;

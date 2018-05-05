@@ -12,6 +12,7 @@ echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal 
 # Create Video Preview thumbnails (1/10 seconds)
 echo -e "\nCreating video preview thumbnails (1/10 seconds)" && \
 ffmpeg -y -v error -i "${input_file}" -r 1/10 -vf scale=-1:120 -vcodec png "output/${filename}/thumbnails/thumbnail-%02d.png" && \
+rm -f "output/${filename}/thumbnails/thumbnail-01.png";
 /bin/webvtt.sh "output/${filename}/thumbnails";
 
 echo -e "\nCreating MPEG-DASH files" && \
