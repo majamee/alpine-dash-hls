@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- VideoJS 7.x variant VHS https://github.com/videojs/http-streaming -->
+<!-- Attention: Pre-release VideoJS 7.x variant -->
 <html lang="en">
 
 <head>
@@ -7,9 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Include VideoJS 7.x version styling & player -->
+  <!-- Using pre-release VideoJS 7.x version styling -->
   <link href="https://unpkg.com/video.js@7/dist/video-js.css" rel="stylesheet">
-  <script src="https://unpkg.com/video.js@7/dist/video.js"></script>
 
   <title>Auto-DASH-HLS VideoJS Player</title>
 </head>
@@ -27,6 +26,10 @@
       </p>
     </video>
   </main>
+
+  <!-- Include pre-release video.js 7.x version including videojs-http-streaming (VHS) by default and dash.js in your page -->
+  <script src="https://unpkg.com/video.js@7/dist/video.js"></script>
+  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
 
   <script>
     var vhsplayer = videojs('player');
