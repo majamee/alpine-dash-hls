@@ -5,6 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- include all required .js files for dash, angular & videogular -->
+  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/angular/angular.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videogular/dist/videogular/videogular.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videogular/dist/controls/vg-controls.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videogular/dist/overlay-play/vg-overlay-play.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videogular/dist/poster/vg-poster.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videogular/dist/dash/vg-dash.min.js"></script>
+
   <title>Auto-DASH-HLS Videogular Player</title>
 </head>
 
@@ -39,17 +49,6 @@
       </div>
     </div>
 
-    <!-- include all required .js files for dash, angular & videogular -->
-    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
-    <script src="https://unpkg.com/angular/angular.min.js"></script>
-    <script src="https://unpkg.com/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="https://unpkg.com/videogular/dist/videogular/videogular.min.js"></script>
-    <script src="https://unpkg.com/videogular/dist/controls/vg-controls.min.js"></script>
-    <script src="https://unpkg.com/videogular/dist/overlay-play/vg-overlay-play.min.js"></script>
-    <script src="https://unpkg.com/videogular/dist/poster/vg-poster.min.js"></script>
-    <script src="https://unpkg.com/videogular/dist/dash/vg-dash.min.js"></script>
-
-
   </main>
 
   <script>
@@ -78,7 +77,7 @@
             ],
             theme: {
               /* Using latest stable Videogular version styling */
-              url: "https://unpkg.com/videogular/dist/themes/default/videogular.min.css"
+              url: "https://cdn.jsdelivr.net/npm/videogular/dist/themes/default/videogular.min.css"
             },
             plugins: {
                 /* Insert here url or path to preview image for video */
