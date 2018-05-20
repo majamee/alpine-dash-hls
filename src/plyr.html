@@ -6,7 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Using latest stable Plyr version 3.x styling -->
-  <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css">
+
+  <!-- Include plyr.js and dash.js in your page -->
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.min.js"></script>
+  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+  <!-- Rangetouch to fix <input type="range"> on touch devices (see https://rangetouch.com) -->
+  <script src="https://cdn.jsdelivr.net/npm/rangetouch/dist/rangetouch.js" async></script>
+  <!-- Polyfills -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent"></script>
 
   <title>Auto-DASH-HLS Plyr Player</title>
 </head>
@@ -21,15 +29,6 @@
         </p>
     </video>
   </main>
-
-  <!-- Include plyr.js and dash.js in your page -->
-  <!-- Using latest stable version 3.x -->
-  <script src="https://unpkg.com/plyr@3/dist/plyr.min.js"></script>
-  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
-  <!-- Rangetouch to fix <input type="range"> on touch devices (see https://rangetouch.com) -->
-  <script src="https://unpkg.com/rangetouch/src/js/rangetouch.js" async></script>
-  <!-- Polyfills -->
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent"></script>
 
   <script>
     video = document.querySelector('#player');

@@ -1,6 +1,7 @@
 FROM                alpine:latest
 
 COPY                ./transcode.sh /bin/transcode.sh
+COPY                ./webvtt.sh /bin/webvtt.sh
 
 RUN                buildDeps="build-base \
                    zlib-dev \
@@ -36,7 +37,8 @@ RUN                buildDeps="build-base \
                    git clone https://github.com/gpac/gpac.git /tmp/gpac && \
                    cd /tmp/gpac && ./configure && make -j4 && make install && make distclean && rm -rf /tmp && \
                    apk del ${buildDeps} && rm -rf /var/cache/apk/* && \
-                   chmod +x /bin/transcode.sh
+                   chmod +x /bin/transcode.sh && \
+                   chmod +x /bin/webvtt.sh
 
 COPY                ./src /app/src
 

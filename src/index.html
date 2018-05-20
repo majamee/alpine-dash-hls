@@ -7,7 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Using latest stable VideoJS version styling -->
-  <link href="https://unpkg.com/video.js/dist/video-js.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/video.js@6.8/dist/video-js.min.css" rel="stylesheet">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/videojs-vtt-thumbnails/dist/videojs-vtt-thumbnails.css" rel="stylesheet"> -->
+
+  <!-- Include video.js, dash.js and videojs-contrib-dash in your page -->
+  <script src="https://cdn.jsdelivr.net/npm/video.js@6.8/dist/video.min.js"></script>
+  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-dash/dist/videojs-dash.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/videojs-vtt-thumbnails/dist/videojs-vtt-thumbnails.min.js"></script> -->
 
   <title>Auto-DASH-HLS VideoJS Player</title>
 </head>
@@ -26,15 +33,11 @@
     </video>
   </main>
 
-  <!-- Include video.js, dash.js and videojs-contrib-dash in your page -->
-  <script src="https://unpkg.com/video.js/dist/video.min.js"></script>
-  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
-  <script src="https://unpkg.com/videojs-contrib-dash/dist/videojs-dash.min.js"></script>
-
   <script>
     /* Initialize VideoJS Player */
     (function(videojs) {
       var videojsplayer = window.player = videojs('player');
+      // videojsplayer.vttThumbnails({ src: 'thumbnails/thumbnails.vtt' });
     })(window.videojs);
   </script>
 
