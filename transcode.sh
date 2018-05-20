@@ -1,14 +1,21 @@
 #!/bin/sh
 
 input_file="${1?Input file missing}"
+# directoryname=$(dirname "${input_file}")
 filename=$(basename "${input_file}")
 filename="${filename%.*}"
 frames=$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 "${input_file}")
 
 # make folders
-echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal # of frames: ${frames}\n" && mkdir -p "output/${filename}" && \
+echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal # of frames: ${frames}" && mkdir -p "output/${filename}/thumbnails" && \
 
-echo -e "Creating MPEG-DASH files" && \
+# Create Video Preview thumbnails (1/10 seconds)
+echo -e "\nCreating video preview thumbnails (1/10 seconds)" && \
+ffmpeg -y -v error -i "${input_file}" -r 1/10 -vf scale=-1:120 -vcodec png "output/${filename}/thumbnails/thumbnail%02d.png" && \
+rm -f "output/${filename}/thumbnails/thumbnail01.png";
+/bin/webvtt.sh "output/${filename}/thumbnails";
+
+echo -e "\nCreating MPEG-DASH files" && \
 # 1080p@CRF22
 echo -e "Total # of frames: ${frames}\n\nCreating Full HD version (no upscaling, Step 1/4)" && \
 ffmpeg -y -threads 0 -v error -stats -i "${input_file}" -an -c:v libx264 -x264opts 'keyint=24:min-keyint=24:no-scenecut' -profile:v high -level 4.0 -vf "scale=min'(1920,iw)':-4" -crf 22 -movflags faststart -write_tmcd 0 "output/${filename}/intermed_1080p.mp4" && \
@@ -43,16 +50,16 @@ xsltproc --stringparam run_id "segment" /app/mpd-to-m3u8/mpd_to_hls.xsl "output/
 
 # Cleanup
 echo -e "\nCleanup of intermediary files" && \
-rm "output/${filename}/intermed_1080p.mp4" "output/${filename}/intermed_720p.mp4" "output/${filename}/intermed_480p.mp4" "output/${filename}/audio_128k.m4a"
+rm "output/${filename}/intermed_1080p.mp4" "output/${filename}/intermed_720p.mp4" "output/${filename}/intermed_480p.mp4" "output/${filename}/audio_128k.m4a";
 
 # Add HTML code for easy inclusion in website
-echo -e "\nAdd HTML files for playback to output folder"
-cp /app/src/htaccess "output/${filename}/.htaccess"
-cp /app/src/index.html "output/${filename}/index.html"
-cp /app/src/plyr.html "output/${filename}/plyr.html"
-cp /app/src/fluid-player.html "output/${filename}/fluid-player.html"
-cp /app/src/videogular.html "output/${filename}/videogular.html"
+echo -e "\nAdd HTML files for playback to output folder";
+cp /app/src/htaccess "output/${filename}/.htaccess";
+cp /app/src/index.html "output/${filename}/index.html";
+cp /app/src/plyr.html "output/${filename}/plyr.html";
+cp /app/src/fluid-player.html "output/${filename}/fluid-player.html";
+cp /app/src/videogular.html "output/${filename}/videogular.html";
 
 # Set permissions for newly created files and folders matching the video file's permissions
-echo -e "\nSetting permissions for all created files and folders & finishing"
-chown -R `stat -c "%u:%g" "${input_file}"` output
+echo -e "\nSetting permissions for all created files and folders & finishing";
+chown -R `stat -c "%u:%g" "${input_file}"` output;

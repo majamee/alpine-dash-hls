@@ -7,6 +7,8 @@
 
   <!-- Using latest stable Fluid Player version 2.x styling -->
   <link rel="stylesheet" href="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.css">
+  <!-- Include fluidplayer.js and dash.js in your page -->
+  <script src="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.js"></script>
 
   <title>Auto-DASH-HLS Fluid-Player</title>
 </head>
@@ -24,18 +26,18 @@
     </video>
   </main>
 
-  <!-- Include fluidplayer.js and dash.js in your page -->
-  <script src="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.js"></script>
-  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
-
   <script>
     /* Initialize Fluid Player */
-    video = document.querySelector('#player');
     fluidPlayer(
       'player',
       /* Options */
       {
         layoutControls: {
+          /* location of .vtt file containing the thumbnails */
+          timelinePreview: {
+              file: 'thumbnails/thumbnails.vtt',
+              type: 'VTT'
+          },
           /* theme */
           layout: 'default',
           /* enable responsive behavior */
@@ -44,6 +46,4 @@
       }
     );
   </script>
-</body>
-
 </html>
