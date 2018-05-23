@@ -8,20 +8,18 @@
 
   <!-- Using latest stable VideoJS version styling -->
   <link href="https://cdn.jsdelivr.net/npm/video.js@6.8/dist/video-js.min.css" rel="stylesheet">
-  <!-- <link href="https://cdn.jsdelivr.net/npm/videojs-vtt-thumbnails/dist/videojs-vtt-thumbnails.css" rel="stylesheet"> -->
 
   <!-- Include video.js, dash.js and videojs-contrib-dash in your page -->
   <script src="https://cdn.jsdelivr.net/npm/video.js@6.8/dist/video.min.js"></script>
   <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-dash/dist/videojs-dash.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/videojs-vtt-thumbnails/dist/videojs-vtt-thumbnails.min.js"></script> -->
 
   <title>Auto-DASH-HLS VideoJS Player</title>
 </head>
 
 <body>
   <main role="main" id="main">
-    <video id="player" class="video-js vjs-default-skin vjs-fluid" controls nativeControlsForTouch>
+    <video id="player" class="video-js vjs-default-skin vjs-fluid" controls nativeControlsForTouch poster="thumbnails/poster.png">
       <!-- DASH-Playlist location -->
       <source src="playlist.mpd" type="application/dash+xml">
       <!-- HLS-Playlist location -->
@@ -37,7 +35,6 @@
     /* Initialize VideoJS Player */
     (function(videojs) {
       var videojsplayer = window.player = videojs('player');
-      // videojsplayer.vttThumbnails({ src: 'thumbnails/thumbnails.vtt' });
     })(window.videojs);
   </script>
 
