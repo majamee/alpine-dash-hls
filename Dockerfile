@@ -30,12 +30,16 @@ RUN                buildDeps="build-base \
                    jack-dev \
                    sdl-dev \
                    openjpeg-dev \
-                   expat-dev" && \
+                   expat-dev \
+                   go" && \
                    apk  add --no-cache --update ${buildDeps} ffmpeg libxslt openssl libpng bash && \
                    git clone https://github.com/squidpickles/mpd-to-m3u8.git /app/mpd-to-m3u8 && \
                    rm -rf !$/.git && \
                    git clone https://github.com/gpac/gpac.git /tmp/gpac && \
-                   cd /tmp/gpac && ./configure && make -j4 && make install && make distclean && rm -rf /tmp && \
+                   cd /tmp/gpac && ./configure && make -j4 && make install && make distclean && \
+                   git clone https://github.com/mutschler/mt.git /tmp/mt && \
+                   cd /tmp/mt && go get github.com/mutschler/mt && \
+                   go build && mv mt /bin/mt && rm -rf /tmp && \
                    apk del ${buildDeps} && rm -rf /var/cache/apk/* && \
                    chmod +x /bin/transcode.sh && \
                    chmod +x /bin/webvtt.sh
