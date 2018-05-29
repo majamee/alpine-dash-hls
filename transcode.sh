@@ -10,11 +10,7 @@ frames=$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of
 echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal # of frames: ${frames}" && mkdir -p "output/${filename}/thumbnails" && \
 
 # Create Video Preview thumbnails (1/10 seconds)
-echo -e "\nCreating video preview thumbnails (1/10 seconds)";
-rm -rf "output/${filename}/thumbnails/"*;
-ffmpeg -y -v error -i "${input_file}" -r 1/10 -vf scale=-1:120 -vcodec png "output/${filename}/thumbnails/thumbnail%02d.png" && \
-rm -f "output/${filename}/thumbnails/thumbnail01.png";
-/bin/webvtt.sh "output/${filename}/thumbnails";
+/bin/webvtt.sh "${input_file}";
 
 # Create Video Poster (from second 3)
 echo -e "\nCreating Video Poster (from second 3)" && \

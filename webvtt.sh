@@ -38,7 +38,11 @@ On_Yellow='\e[43m'        # Yellow
 On_Light_Red='\e[101m'    # Light Red
 On_Light_Blue='\e[104m'   # Light Blue
 
-directoryname="${1?Thumbnail folder not specified}"
+input_file="${1?Input file missing}"
+filename=$(basename "${input_file}")
+filename="${filename%.*}"
+frames=$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 "${input_file}")
+
 # Video Preview thumbnails (1/10 seconds)
 thumbnail_timewindow=10
 n=0
@@ -51,7 +55,14 @@ s2=0
 
 shopt -s nullglob;
 
-cd "${directoryname}";
+# Create Video Preview thumbnails (1/10 seconds)
+mkdir -p "output/${filename}/thumbnails";
+echo -e "\nCreating video preview thumbnails (1/${thumbnail_timewindow} seconds)";
+rm -rf "output/${filename}/thumbnails/"*;
+ffmpeg -y -v error -i "${input_file}" -r 1/${thumbnail_timewindow} -vf scale=-1:120 -vcodec png "output/${filename}/thumbnails/thumbnail%02d.png" && \
+rm -f "output/${filename}/thumbnails/thumbnail01.png";
+
+cd "output/${filename}/thumbnails";
 # writing thumbnail image names into file
 ls *.png > thumbnails.tmp;
 # inserting matching WEBVTT timestamps for the preview images
