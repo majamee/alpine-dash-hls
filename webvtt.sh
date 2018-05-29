@@ -49,7 +49,7 @@ thumbnail_timewindow=7
 
 shopt -s nullglob;
 
-# Create Video Preview thumbnails (1/10 seconds)
+# Create Video Preview thumbnails (1/${thumbnail_timewindow} seconds)
 echo -e "\nCreating video preview thumbnails (1/${thumbnail_timewindow} seconds)";
 # Creating target directory
 mkdir -p "output/${filename}/thumbnails";
