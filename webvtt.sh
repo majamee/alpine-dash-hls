@@ -43,8 +43,9 @@ filename=$(basename "${input_file}")
 filename="${filename%.*}"
 frames=$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 "${input_file}")
 
-# Video Preview thumbnails (1/10 seconds)
-thumbnail_timewindow=10
+# Video Preview thumbnails (1/${thumbnail_timewindow} seconds)
+thumbnail_timewindow=7
+
 n=0
 h1=0
 m1=0
@@ -52,10 +53,13 @@ s1=0
 h2=0
 m2=0
 s2=0
+thumbnail_counter=0
+thumbnail_width=120
+thumbnail_height=68
 
 shopt -s nullglob;
 
-# Create Video Preview thumbnails (1/10 seconds)
+# Create Video Preview thumbnails (1/${thumbnail_timewindow} seconds)
 mkdir -p "output/${filename}/thumbnails";
 echo -e "\nCreating video preview thumbnails (1/${thumbnail_timewindow} seconds)";
 rm -rf "output/${filename}/thumbnails/"*;
@@ -65,8 +69,37 @@ rm -f "output/${filename}/thumbnails/thumbnail01.png";
 cd "output/${filename}/thumbnails";
 # writing thumbnail image names into file
 ls *.png > thumbnails.tmp;
+
+first_image="";
+x=0;
+while read line
+do
+  if [[ $thumbnail_counter -eq 0 ]]; then
+  first_image=${line};
+  thumbnail_width=$( exiv2 ${first_image} | grep " x " | grep -o '[0-9]*' | head -1 );
+  thumbnail_height=$( exiv2 ${first_image} | grep " x " | grep -o '[0-9]*' | tail -n +2 );
+  echo -e "Thumbnail Dimensions: ${thumbnail_width} x ${thumbnail_height}";
+  elif [[ $thumbnail_counter -eq 1 ]]; then
+    ffmpeg -y -v error -i ${first_image} -i ${line} -filter_complex hstack thumbnails.png;
+    rm -f "${first_image}" "${line}";
+  elif [[ $thumbnail_counter -gt 1 ]]; then
+    # Workaround for missing leading "t" from line read
+    if [[ $line == t* ]]; then
+      ffmpeg -y -v error -i thumbnails.png -i ${line} -filter_complex hstack thumbnails.png;
+      rm -f "${line}";
+    else
+      ffmpeg -y -v error -i thumbnails.png -i t${line} -filter_complex hstack thumbnails.png;
+      rm -f t"${line}";
+    fi
+  fi
+  thumbnail_counter=$((thumbnail_counter+1));
+  echo "thumbnails.png#xywh=${x},0,${thumbnail_width},${thumbnail_height}" >> thumbnails.vtt;
+  x=$((x+thumbnail_width));
+done < thumbnails.tmp
+echo -e "Thumbnail count: ${thumbnail_counter}";
+mv thumbnails.vtt thumbnails.tmp;
+
 # inserting matching WEBVTT timestamps for the preview images
-rm -f thumbnails.vtt;
 while read line
 do
   h1=$(( n / 3600 ));
