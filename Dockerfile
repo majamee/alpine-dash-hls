@@ -25,13 +25,13 @@ RUN                buildDeps="build-base \
                    libxv-dev \
                    alsa-lib-dev \
                    xvidcore-dev \
-                   openssl-dev \
+                   libressl-dev \
                    libpng-dev \
                    jack-dev \
                    sdl-dev \
                    openjpeg-dev \
                    expat-dev" && \
-                   apk  add --no-cache --update ${buildDeps} ffmpeg libxslt openssl libpng bash exiv2 && \
+                   apk  add --no-cache --update ${buildDeps} ffmpeg libxslt libressl libpng bash exiv2 && \
                    git clone https://github.com/squidpickles/mpd-to-m3u8.git /app/mpd-to-m3u8 && \
                    rm -rf !$/.git && \
                    git clone https://github.com/gpac/gpac.git /tmp/gpac && \
