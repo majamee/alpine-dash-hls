@@ -15,3 +15,17 @@ AddType video/mp4 .mp4
     Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Range"
     Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, HEAD"
 </IfModule>
+
+# Grant access for .ts files
+<FilesMatch "(\.ts|.mp4|.mpd|.m3u8)$">
+    # Apache < 2.3
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Allow from all
+        Satisfy All
+    </IfModule>
+    # Apache ≥ 2.3
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+</FilesMatch>
