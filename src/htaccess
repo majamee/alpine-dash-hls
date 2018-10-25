@@ -17,7 +17,7 @@ AddType video/mp4 .mp4
 </IfModule>
 
 # Grant access for .ts files
-<FilesMatch "(\.ts|.mp4|.mpd|.m3u8)$">
+<FilesMatch "\.(ts|mp4|mpd|m3u8)$">
     # Apache < 2.3
     <IfModule !mod_authz_core.c>
         Order allow,deny
