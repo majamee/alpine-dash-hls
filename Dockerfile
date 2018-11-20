@@ -37,9 +37,8 @@ RUN                buildDeps="build-base \
                    rm -rf !$/.git && \
                    git clone https://github.com/gpac/gpac.git /tmp/gpac && \
                    cd /tmp/gpac && ./configure && make -j4 && make install && make distclean && \
-                   git clone https://github.com/mutschler/mt.git /tmp/mt && \
-                   cd /tmp/mt && go get github.com/mutschler/mt && \
-                   go build && mv mt /bin/mt && rm -rf /tmp && \
+                   go get github.com/mutschler/mt && mv ~/go/bin/mt /bin/mt && \
+                   rm -rf /tmp && \
                    apk del ${buildDeps} && rm -rf /var/cache/apk/* && \
                    chmod +x /bin/transcode.sh && \
                    chmod +x /bin/webvtt.sh
