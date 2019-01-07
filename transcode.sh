@@ -54,7 +54,6 @@ echo -e "\nCleanup of intermediary files" && \
 rm "output/${filename}/intermed_1080p.mp4" "output/${filename}/intermed_720p.mp4" "output/${filename}/intermed_480p.mp4" "output/${filename}/audio_128k.m4a";
 
 # Add HTML code for easy inclusion in website
-
 echo -e "\nAdd HTML files for playback to output folder";
 cp /app/src/htaccess "output/${filename}/.htaccess";
 ln -s "output/${filename}/.htaccess" "output/${filename}/symbolic_link.htaccess";
