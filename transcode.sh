@@ -57,6 +57,7 @@ rm "output/${filename}/intermed_1080p.mp4" "output/${filename}/intermed_720p.mp4
 
 echo -e "\nAdd HTML files for playback to output folder"
 cp /app/src/htaccess "output/${filename}/.htaccess"
+ln -s "output/${filename}/.htaccess" "output/${filename}/symbolic_link.htaccess"
 cp /app/src/index.html "output/${filename}/index.html"
 cp /app/src/plyr.html "output/${filename}/plyr.html"
 cp /app/src/fluid-player.html "output/${filename}/fluid-player.html"
