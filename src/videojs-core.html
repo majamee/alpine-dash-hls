@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- VideoJS 7.x variant VHS https://github.com/videojs/http-streaming -->
 <html lang="en">
 
 <head>
@@ -7,9 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Include VideoJS 7.x version styling & player -->
+  <!-- Using latest stable VideoJS version styling -->
   <link href="https://cdn.jsdelivr.net/npm/video.js@7/dist/video-js.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/video.js@7/dist/video.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/videojs-vtt-thumbnails/dist/videojs-vtt-thumbnails.css" rel="stylesheet">
+
+  <!-- Include video.js, dash.js and videojs-contrib-dash in your page -->
+  <script src="https://cdn.jsdelivr.net/npm/video.js@7/dist/alt/video.core.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/video.js@7/dist/video.min.js"></script> -->
+  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-dash/dist/videojs-dash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-vtt-thumbnails/dist/videojs-vtt-thumbnails.min.js"></script>
 
   <title>Auto-DASH-HLS VideoJS Player</title>
 </head>
@@ -29,9 +35,13 @@
   </main>
 
   <script>
-    var vhsplayer = videojs('player');
+    /* Initialize VideoJS Player */
+    (function(videojs) {
+      var videojsplayer = window.player = videojs('player');
+      videojsplayer.vttThumbnails({
+        src: 'thumbnails/thumbnails.vtt'
+      });
+    })(window.videojs);
   </script>
-
-</body>
 
 </html>

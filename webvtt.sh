@@ -122,4 +122,4 @@ done < thumbnails.tmp
 echo >> thumbnails.vtt;
 rm -f thumbnails.tmp;
 # Insert new line "WEBVTT" at the start of thumbnails.vtt file
-sed -i '1 i\WEBVTT' thumbnails.vtt
+sed -i '1 i\WEBVTT' thumbnails.vtt;
