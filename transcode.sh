@@ -62,6 +62,7 @@ cp /app/src/plyr.html "output/${filename}/plyr.html";
 cp /app/src/fluid-player.html "output/${filename}/fluid-player.html";
 cp /app/src/videogular.html "output/${filename}/videogular.html";
 cp /app/src/videojs-vhs.html "output/${filename}/videojs-vhs.html";
+cp /app/src/videojs-core.html "output/${filename}/videojs-core.html";
 
 # Set permissions for newly created files and folders matching the video file's permissions
 echo -e "\nSetting permissions for all created files and folders & finishing";
