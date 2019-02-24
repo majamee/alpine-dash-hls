@@ -38,7 +38,8 @@ RUN                buildDeps="build-base \
                    cd /tmp/gpac && ./configure && make -j4 && make install && make distclean && rm -rf /tmp && \
                    apk del ${buildDeps} && rm -rf /var/cache/apk/* && \
                    chmod +x /bin/transcode.sh && \
-                   chmod +x /bin/webvtt.sh
+                   chmod +x /bin/webvtt.sh && \
+                   chmod +x /bin/sprite.sh
 
 COPY                ./src /app/src
 
