@@ -2,6 +2,7 @@ FROM                alpine:latest
 
 COPY                ./transcode.sh /bin/transcode.sh
 COPY                ./webvtt.sh /bin/webvtt.sh
+COPY                ./sprite.sh /bin/sprite.sh
 
 RUN                buildDeps="build-base \
                    zlib-dev \
