@@ -11,6 +11,10 @@
   <link href="https://cdn.jsdelivr.net/npm/video.js@7/dist/video-js.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/video.js@7/dist/video.min.js"></script>
 
+  <!-- Include https://github.com/chrisboustead/videojs-vtt-thumbnails -->
+  <link href="https://cdn.jsdelivr.net/npm/videojs-vtt-thumbnails/dist/videojs-vtt-thumbnails.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/videojs-vtt-thumbnails/dist/videojs-vtt-thumbnails.min.js"></script>
+
   <title>Auto-DASH-HLS VideoJS Player</title>
 </head>
 
@@ -29,7 +33,13 @@
   </main>
 
   <script>
-    var vhsplayer = videojs('player');
+    /* Initialize VideoJS Player */
+    (function(videojs) {
+      var videojsplayer = window.player = videojs('player');
+      videojsplayer.vttThumbnails({
+        src: 'thumbnails/thumbnails.vtt'
+      });
+    })(window.videojs);
   </script>
 
 </body>
