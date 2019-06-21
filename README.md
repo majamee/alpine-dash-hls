@@ -2,9 +2,9 @@
 [![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) |
 [![](https://img.shields.io/docker/stars/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/pulls/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank)
 
-![Alpine Dash HLS - Simple Stream Videos](http://majamee.000webhostapp.com/user/images/ADH-logo-alphatest.png)
+![Alpine Dash HLS - Simple Stream Videos](https://alpine-dash-hls.gq/user/images/ADH-logo-alphatest.png)
 
-# [Alpine Dash HLS](http://alpine-dash-hls.gq/)
+# [Alpine Dash HLS](https://alpine-dash-hls.gq/)
 A ready-prepared video transcoding pipeline to create DASH/ HLS compatible video files &amp; playlists.
 
 Recommended usage via Docker [Kitematic](https://kitematic.com/?target=_blank) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank).
@@ -58,7 +58,7 @@ Suggestions welcome. :)
 
 ## Tools to test the generated files for streaming
 * HLS (e.g. Safari on Mac OS X): https://videojs.github.io/videojs-contrib-hls/ (use the .m3u8 master-playlist)
-* DASH (e.g. Firefox/ Chrome): http://reference.dashif.org/dash.js/ (use the latest released version & the .mpd playlist)
+* DASH (e.g. Firefox/ Chrome): https://reference.dashif.org/dash.js/ (use the latest released version & the .mpd playlist)
 
 # Features
 * Supported devices: iOS (Chrome/ Firefox/ Safari), Android (Chrome/ Firefox), Mac (Chrome/ Firefox/ Safari), Windows (Chrome/ Firefox/ EDGE)
@@ -75,15 +75,15 @@ Suggestions welcome. :)
 * Adds also HTML and `.htaccess` file including code ready for inclusion into the own website for playback next to all other created files
 * Generates and sets Poster image (from second 3 of the input video file)
 * Generates and includes video preview thumbnails (currently only natively supported by [Fluid Player](https://www.fluidplayer.com/?target=_blank) via [WebVTT](http://www.webvtt.cc/?target=_blank))
-* Video preview support thumbnail support added for [Video.js](http://videojs.com/?target=_blank) via [videojs-vtt-thumbnails](https://github.com/chrisboustead/videojs-vtt-thumbnails/)
+* Video preview support thumbnail support added for [Video.js](https://videojs.com/?target=_blank) via [videojs-vtt-thumbnails](https://github.com/chrisboustead/videojs-vtt-thumbnails/)
 * Included fallback player (`fluid-player.html`) is based on the great work of the devs at [Fluid Player](https://www.fluidplayer.com/?target=_blank)
 * Included second fallback player (`plyr.html`) is based on the great work of the devs at [Plyr](https://plyr.io/?target=_blank)
 * Included third fallback player (`videogular.html`) is based on the great work of the devs at [Videogular](http://www.videogular.com/?target=_blank)
-* Included player (`index.html`) is based on the great work of the guys at [Video.js](http://videojs.com/?target=_blank)
+* Included player (`index.html`) is based on the great work of the guys at [Video.js](https://videojs.com/?target=_blank)
 
 # Tip
 For creating DASH/ HLS compatible files for multiple videos in a single run, please have a look at:
 * [https://majamee.github.io/auto-dash-hls/](https://majamee.github.io/auto-dash-hls/?target=_blank)
 
 # Demo
-[http://alpine-dash-hls.gq/demos](http://alpine-dash-hls.gq/demos/?target=_blank)
+[https://alpine-dash-hls.gq/demos](https://alpine-dash-hls.gq/demos/?target=_blank)
