@@ -70,32 +70,26 @@ cd "output/${filename}/thumbnails";
 # Write thumbnail image names into file
 ls *.png > thumbnails.tmp;
 
-first_image="";
+image_stack="";
+delete_tmp_files="";
 x=0;
 while read line
 do
+  image_stack="${image_stack} -i ${line}";
+  delete_tmp_files="${delete_tmp_files} ${line}";
   if [[ $thumbnail_counter -eq 0 ]]; then
-  first_image=${line};
-  thumbnail_width=$( exiv2 ${first_image} | grep " x " | grep -o '[0-9]*' | head -1 );
-  thumbnail_height=$( exiv2 ${first_image} | grep " x " | grep -o '[0-9]*' | tail -n +2 );
-  echo -e "Thumbnail Dimensions: ${thumbnail_width} x ${thumbnail_height}";
-  elif [[ $thumbnail_counter -eq 1 ]]; then
-    ffmpeg -y -v error -i ${first_image} -i ${line} -filter_complex hstack thumbnails.png;
-    rm -f "${first_image}" "${line}";
-  elif [[ $thumbnail_counter -gt 1 ]]; then
-    # Workaround for missing leading "t" from line read
-    if [[ $line == t* ]]; then
-      ffmpeg -y -v error -i thumbnails.png -i ${line} -filter_complex hstack thumbnails.png;
-      rm -f "${line}";
-    else
-      ffmpeg -y -v error -i thumbnails.png -i t${line} -filter_complex hstack thumbnails.png;
-      rm -f t"${line}";
-    fi
+    thumbnail_width=$(( exiv2 ${line} | grep " x " | grep -o '[0-9]*' | head -1 ) 2>/dev/null);
+    thumbnail_height=$(( exiv2 ${line} | grep " x " | grep -o '[0-9]*' | tail -n +2 ) 2>/dev/null);
+    echo -e "Thumbnail Dimensions: ${thumbnail_width} x ${thumbnail_height}";
   fi
   thumbnail_counter=$((thumbnail_counter+1));
   echo "thumbnails.png#xywh=${x},0,${thumbnail_width},${thumbnail_height}" >> thumbnails.vtt;
   x=$((x+thumbnail_width));
 done < thumbnails.tmp
+if [[ $thumbnail_counter -gt 1 ]]; then
+  ffmpeg -y -v error $image_stack -filter_complex hstack=inputs=$thumbnail_counter thumbnails.png;
+fi
+rm -f $delete_tmp_files;
 echo -e "Thumbnail count: ${thumbnail_counter}";
 mv thumbnails.vtt thumbnails.tmp;
 
@@ -118,8 +112,8 @@ do
   n=$((n+thumbnail_timewindow));
 done < thumbnails.tmp
 
-# Append line-feed at the end of thumbnails.vtt file
-echo >> thumbnails.vtt;
 rm -f thumbnails.tmp;
 # Insert new line "WEBVTT" at the start of thumbnails.vtt file
 sed -i '1 i\WEBVTT' thumbnails.vtt;
+# Append line-feed at the end of thumbnails.vtt file
+echo >> thumbnails.vtt;
