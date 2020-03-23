@@ -4,7 +4,7 @@
 
 ![Alpine Dash HLS - Simple Stream Videos](https://majamee.000webhostapp.com/user/images/ADH-logo-alphatest.png)
 
-# [Alpine Dash HLS](https://alpine-dash-hls.gq/)
+# [Alpine Dash HLS](https://majamee.000webhostapp.com/)
 A ready-prepared video transcoding pipeline to create DASH/ HLS compatible video files &amp; playlists.
 
 Recommended usage via Docker [Kitematic](https://kitematic.com/?target=_blank) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank).
