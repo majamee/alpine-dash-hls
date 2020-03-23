@@ -86,4 +86,4 @@ For creating DASH/ HLS compatible files for multiple videos in a single run, ple
 * [https://majamee.github.io/auto-dash-hls/](https://majamee.github.io/auto-dash-hls/?target=_blank)
 
 # Demo
-[https://alpine-dash-hls.gq/demos](https://alpine-dash-hls.gq/demos/?target=_blank)
+[https://majamee.000webhostapp.com/demos](https://majamee.000webhostapp.com/demos/?target=_blank)
