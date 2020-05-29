@@ -2,9 +2,9 @@
 [![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) |
 [![](https://img.shields.io/docker/stars/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/pulls/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank)
 
-![Alpine Dash HLS - Simple Stream Videos](https://alpine-dash-hls.gq/user/images/ADH-logo-alphatest.png)
+![Alpine Dash HLS - Simple Stream Videos](https://majamee.000webhostapp.com/user/images/ADH-logo-alphatest.png)
 
-# [Alpine Dash HLS](https://alpine-dash-hls.gq/)
+# [Alpine Dash HLS](https://majamee.000webhostapp.com/)
 A ready-prepared video transcoding pipeline to create DASH/ HLS compatible video files &amp; playlists.
 
 Recommended usage via Docker [Kitematic](https://kitematic.com/?target=_blank) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank).
@@ -86,4 +86,4 @@ For creating DASH/ HLS compatible files for multiple videos in a single run, ple
 * [https://majamee.github.io/auto-dash-hls/](https://majamee.github.io/auto-dash-hls/?target=_blank)
 
 # Demo
-[https://alpine-dash-hls.gq/demos](https://alpine-dash-hls.gq/demos/?target=_blank)
+[https://majamee.000webhostapp.com/demos](https://majamee.000webhostapp.com/demos/?target=_blank)
