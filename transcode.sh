@@ -9,6 +9,8 @@ frames=$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of
 # make folders
 echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal # of frames: ${frames}" && mkdir -p "output/${filename}/thumbnails" && \
 
+echo -e "\n\nPARAM1 $1\nPARAM2 $2\n\n";
+
 if [[ $1 != "--transcode-only" ]]; then
   # Create Video Preview thumbnails, unless parameter "--transcode-only"
   /bin/webvtt.sh "${input_file}";
