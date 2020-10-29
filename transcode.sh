@@ -11,7 +11,7 @@ echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal 
 
 echo -e "\n\nPARAM1 $1\nPARAM2 $2\n\n";
 
-if [[ $1 != "--transcode-only" ]]; then
+if [[ $2 != "--transcode-only" ]]; then
   # Create Video Preview thumbnails, unless parameter "--transcode-only"
   /bin/webvtt.sh "${input_file}";
 
@@ -59,7 +59,7 @@ echo -e "\nCleanup of intermediary files" && \
 rm "output/${filename}/intermed_1080p.mp4" "output/${filename}/intermed_720p.mp4" "output/${filename}/intermed_480p.mp4" "output/${filename}/audio_128k.m4a";
 
 # Add HTML code for easy inclusion in website
-if [[ $1 != "--transcode-only" ]]; then
+if [[ $2 != "--transcode-only" ]]; then
   echo -e "\nAdd HTML files for playback to output folder";
   cp /app/src/htaccess "output/${filename}/.htaccess";
   ln -s .htaccess "output/${filename}/symbolic_link.htaccess";
