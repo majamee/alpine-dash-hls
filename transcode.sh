@@ -1,6 +1,7 @@
 #!/bin/sh
 
 input_file="${1?Input file missing}"
+transcode_only=""
 # directoryname=$(dirname "${input_file}")
 filename=$(basename "${input_file}")
 filename="${filename%.*}"
@@ -9,7 +10,7 @@ frames=$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of
 echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal # of frames: ${frames}";
 mkdir -p "output/${filename}/";
 
-if [[ $2 != "--transcode-only" ]]; then
+if [[ -z "$2"] || [ $2 != "--transcode-only" ]]; then
   mkdir -p "output/${filename}/thumbnails";
   # Create Video Preview thumbnails, unless parameter "--transcode-only"
   /bin/webvtt.sh "${input_file}";
@@ -60,7 +61,7 @@ echo -e "\nCleanup of intermediary files" && \
 rm "output/${filename}/intermed_1080p.mp4" "output/${filename}/intermed_720p.mp4" "output/${filename}/intermed_480p.mp4" "output/${filename}/audio_128k.m4a";
 
 # Add HTML code for easy inclusion in website
-if [[ $2 != "--transcode-only" ]]; then
+if [[ -z "$2"] || [ $2 != "--transcode-only" ]]; then
   echo -e "\nAdd HTML files for playback to output folder";
   cp /app/src/htaccess "output/${filename}/.htaccess";
   ln -s .htaccess "output/${filename}/symbolic_link.htaccess";
