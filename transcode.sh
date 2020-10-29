@@ -1,7 +1,6 @@
 #!/bin/sh
 
 input_file="${1?Input file missing}"
-transcode_only=""
 # directoryname=$(dirname "${input_file}")
 filename=$(basename "${input_file}")
 filename="${filename%.*}"
