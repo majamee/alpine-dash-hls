@@ -18,7 +18,7 @@ if [[ -z "$2"] || [ $2 != "--transcode-only" ]]; then
 # Create Video Poster (from second 3), unless parameter "--transcode-only"
   echo -e "\nCreating Video Poster (from second 3)" && \
   ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -vframes 1 -vcodec png "output/${filename}/thumbnails/poster.png";
-elif [[ $2 == "--transcode-only" ]]; then
+else
   echo -e "\nTranscode only selected: No HTML and image files will be created.";
 fi
 
