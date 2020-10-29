@@ -6,18 +6,18 @@ filename=$(basename "${input_file}")
 filename="${filename%.*}"
 frames=$(ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 "${input_file}")
 
-# make folders
-echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal # of frames: ${frames}" && mkdir -p "output/${filename}/thumbnails" && \
-
-echo -e "\n\nPARAM1 $1\nPARAM2 $2\n\n";
+echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal # of frames: ${frames}";
 
 if [[ $2 != "--transcode-only" ]]; then
+  mkdir -p "output/${filename}/thumbnails";
   # Create Video Preview thumbnails, unless parameter "--transcode-only"
   /bin/webvtt.sh "${input_file}";
 
 # Create Video Poster (from second 3), unless parameter "--transcode-only"
   echo -e "\nCreating Video Poster (from second 3)" && \
   ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -vframes 1 -vcodec png "output/${filename}/thumbnails/poster.png";
+else
+  echo -e "\nTranscode only selected: No HTML and image files will be created.";
 fi
 
 # Transcode the video
