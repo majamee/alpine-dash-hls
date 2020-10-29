@@ -36,9 +36,9 @@ RUN                buildDeps="build-base \
                    git clone https://github.com/squidpickles/mpd-to-m3u8.git /app/mpd-to-m3u8 && \
                    rm -rf !$/.git && \
                    git clone https://github.com/gpac/gpac.git /tmp/gpac && \
-                   cd /tmp/gpac && ./configure && make -j4 && make install && make distclean && \
+                   cd /tmp/gpac && ./configure --static-mp4box && make -j4 && make install && make distclean && 
                    go get github.com/mutschler/mt && mv ~/go/bin/mt /bin/mt && \
-                   rm -rf /tmp && \
+                   rm -rf /tmp/gpac && \
                    apk del ${buildDeps} && rm -rf /var/cache/apk/* && \
                    chmod +x /bin/transcode.sh && \
                    chmod +x /bin/webvtt.sh
