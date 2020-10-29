@@ -60,7 +60,6 @@ thumbnail_height=68
 shopt -s nullglob;
 
 # Create Video Preview thumbnails (1/${thumbnail_timewindow} seconds)
-mkdir -p "output/${filename}/thumbnails";
 echo -e "\nCreating video preview thumbnails (1/${thumbnail_timewindow} seconds)";
 rm -rf "output/${filename}/thumbnails/"*;
 ffmpeg -y -v error -i "${input_file}" -r 1/${thumbnail_timewindow} -vf scale=-1:120 -qscale:v 3 "output/${filename}/thumbnails/thumbnail%02d.jpg";
