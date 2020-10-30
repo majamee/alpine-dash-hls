@@ -10,7 +10,6 @@ echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal 
 mkdir -p "output/${filename}/";
 
 if [[ -z "$2" ]]; then
-  mkdir -p "output/${filename}/thumbnails";
   # Create Video Preview thumbnails, unless parameter "--transcode-only"
   /bin/webvtt.sh "${input_file}";
 
@@ -19,7 +18,6 @@ if [[ -z "$2" ]]; then
   ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -vframes 1 -vcodec png "output/${filename}/thumbnails/poster.png";
 else
   if [ $2 != "--transcode-only" ]; then
-    mkdir -p "output/${filename}/thumbnails";
     # Create Video Preview thumbnails, unless parameter "--transcode-only"
     /bin/webvtt.sh "${input_file}";
 
