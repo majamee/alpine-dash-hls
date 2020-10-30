@@ -11,7 +11,6 @@ echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal 
 mkdir -p "output/${filename}/";
 
 if [[ -z "$2" ]]; then
-  mkdir -p "output/${filename}/thumbnails";
   # Create Video Preview thumbnails
   /bin/webvtt.sh "${input_file}";
 
@@ -20,7 +19,6 @@ if [[ -z "$2" ]]; then
   ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -qscale:v 3 -frames:v 1 "output/${filename}/thumbnails/poster.jpg";
 else
   if [ $2 != "--transcode-only" ]; then
-    mkdir -p "output/${filename}/thumbnails";
     # Create Video Preview thumbnails
     /bin/webvtt.sh "${input_file}";
 
