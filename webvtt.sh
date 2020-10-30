@@ -50,7 +50,10 @@ thumbnail_timewindow=7
 shopt -s nullglob;
 
 # Create Video Preview thumbnails (1/${thumbnail_timewindow} seconds)
+mkdir -p "output/${filename}/thumbnails";
 echo -e "\nCreating video preview thumbnails (1/${thumbnail_timewindow} seconds)";
+rm -rf "output/${fname}/thumbnails/"*;
+
 # Renaming input file for automated thumbnail preview generating
 mv "${filename}.${extension}" "thumbnails.${extension}";
 # Let `mt` do the thumbnail & webvtt file generation https://github.com/mutschler/mt
