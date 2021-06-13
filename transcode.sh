@@ -18,7 +18,7 @@ if [[ -z "$2" ]]; then
   ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -vframes 1 -vcodec png "output/${filename}/thumbnails/poster.png";
 else
   if [ $2 != "--transcode-only" ]; then
-    # Create Video Preview thumbnails
+    # Create Video Preview thumbnails, unless parameter "--transcode-only"
     /bin/sprite.sh "${input_file}";
 
     # Create Video Poster (from second 3)
@@ -29,6 +29,15 @@ else
   fi
 fi
 
+    # Create Video Poster (from second 3), unless parameter "--transcode-only"
+    echo -e "\nCreating Video Poster (from second 3)" && \
+    ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -vframes 1 -vcodec png "output/${filename}/thumbnails/poster.png";
+  else
+    echo -e "\nTranscode only selected: No HTML and image files will be created.";
+  fi
+fi
+
+# Transcode the video
 echo -e "\nCreating MPEG-DASH files" && \
 # 1080p@CRF22
 echo -e "Total # of frames: ${frames}\n\nCreating Full HD version (no upscaling, Step 1/4)" && \
