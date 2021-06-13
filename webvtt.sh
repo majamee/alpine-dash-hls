@@ -63,12 +63,12 @@ shopt -s nullglob;
 mkdir -p "output/${filename}/thumbnails";
 echo -e "\nCreating video preview thumbnails (1/${thumbnail_timewindow} seconds)";
 rm -rf "output/${filename}/thumbnails/"*;
-ffmpeg -y -v error -i "${input_file}" -r 1/${thumbnail_timewindow} -vf scale=-1:120 -vcodec png "output/${filename}/thumbnails/thumbnail%02d.png" && \
-rm -f "output/${filename}/thumbnails/thumbnail01.png";
+ffmpeg -y -v error -i "${input_file}" -r 1/${thumbnail_timewindow} -vf scale=-1:120 -qscale:v 3 "output/${filename}/thumbnails/thumbnail%02d.jpg";
+rm -f "output/${filename}/thumbnails/thumbnail01.jpg";
 
 cd "output/${filename}/thumbnails";
 # Write thumbnail image names into file
-ls *.png > thumbnails.tmp;
+ls *.jpg > thumbnails.tmp;
 
 image_stack="";
 delete_tmp_files="";
@@ -83,11 +83,11 @@ do
     echo -e "Thumbnail Dimensions: ${thumbnail_width} x ${thumbnail_height}";
   fi
   thumbnail_counter=$((thumbnail_counter+1));
-  echo "thumbnails.png#xywh=${x},0,${thumbnail_width},${thumbnail_height}" >> thumbnails.vtt;
+  echo "thumbnails.jpg#xywh=${x},0,${thumbnail_width},${thumbnail_height}" >> thumbnails.vtt;
   x=$((x+thumbnail_width));
 done < thumbnails.tmp
 if [[ $thumbnail_counter -gt 1 ]]; then
-  ffmpeg -y -v error $image_stack -filter_complex hstack=inputs=$thumbnail_counter thumbnails.png;
+  ffmpeg -y -v error $image_stack -filter_complex hstack=inputs=$thumbnail_counter thumbnails.jpg;
 fi
 rm -f $delete_tmp_files;
 echo -e "Thumbnail count: ${thumbnail_counter}";
