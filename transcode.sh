@@ -10,25 +10,26 @@ echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal 
 mkdir -p "output/${filename}/";
 
 if [[ -z "$2" ]]; then
-  # Create Video Preview thumbnails
+  # Create Video Preview thumbnails, unless parameter "--transcode-only"
   /bin/webvtt.sh "${input_file}";
 
-  # Create Video Poster (from second 3)
+  # Create Video Poster (from second 3), unless parameter "--transcode-only"
   echo -e "\nCreating Video Poster (from second 3)" && \
-  ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -qscale:v 3 -frames:v 1 "output/${filename}/thumbnails/poster.jpg";
+  ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -vframes 1 -vcodec png "output/${filename}/thumbnails/poster.png";
 else
   if [ $2 != "--transcode-only" ]; then
-    # Create Video Preview thumbnails
+    # Create Video Preview thumbnails, unless parameter "--transcode-only"
     /bin/webvtt.sh "${input_file}";
 
-    # Create Video Poster (from second 3)
+    # Create Video Poster (from second 3), unless parameter "--transcode-only"
     echo -e "\nCreating Video Poster (from second 3)" && \
-    ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -qscale:v 3 -frames:v 1 "output/${filename}/thumbnails/poster.jpg";
+    ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -vframes 1 -vcodec png "output/${filename}/thumbnails/poster.png";
   else
     echo -e "\nTranscode only selected: No HTML and image files will be created.";
   fi
 fi
 
+# Transcode the video
 echo -e "\nCreating MPEG-DASH files" && \
 # 1080p@CRF22
 echo -e "Total # of frames: ${frames}\n\nCreating Full HD version (no upscaling, Step 1/4)" && \
