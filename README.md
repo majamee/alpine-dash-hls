@@ -1,4 +1,4 @@
-[![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/cloud/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) |
+[![Docker Image CI](https://github.com/majamee/alpine-dash-hls/actions/workflows/docker-image.yml/badge.svg?branch=edge)](https://github.com/majamee/alpine-dash-hls/actions/workflows/docker-image.yml) [![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/cloud/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) |
 [![](https://img.shields.io/docker/stars/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/pulls/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank)
 
 ![Alpine Dash HLS - Simple Stream Videos](https://raw.githubusercontent.com/majamee/adh/main/adh-logo.png)
