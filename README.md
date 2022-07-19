@@ -6,7 +6,7 @@
 # [Alpine Dash HLS](https://majamee.de)
 A ready-prepared video transcoding pipeline to create DASH/ HLS compatible video files &amp; playlists.
 
-Recommended usage via Docker [Kitematic](https://kitematic.com/?target=_blank) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank).
+Recommended usage via Docker [Docker Desktop](https://www.docker.com/products/docker-desktop/?target=_blank) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank).
 
 # Simplified usage (run in shell/ terminal/ cmd)
 Prerequisite: [Docker](https://www.docker.com/?target=_blank) needs to be installed and running.
