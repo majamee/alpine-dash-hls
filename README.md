@@ -4,6 +4,7 @@
 ![Alpine Dash HLS - Simple Stream Videos](https://raw.githubusercontent.com/majamee/adh/main/adh-logo.png)
 
 # [Alpine Dash HLS](https://majamee.de)
+
 A ready-prepared video transcoding pipeline to create DASH/ HLS compatible video files &amp; playlists.
 
 Recommended usage via Docker [Kitematic](https://kitematic.com/?target=_blank) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank).
