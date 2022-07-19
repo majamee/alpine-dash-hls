@@ -1,4 +1,4 @@
-[![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/cloud/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) |
+[![Docker Image CI](https://github.com/majamee/alpine-dash-hls/actions/workflows/docker-image.yml/badge.svg)](https://github.com/majamee/alpine-dash-hls/actions/workflows/docker-image.yml) [![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/cloud/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) |
 [![](https://img.shields.io/docker/stars/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/pulls/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank)
 
 ![Alpine Dash HLS - Simple Stream Videos](https://raw.githubusercontent.com/majamee/adh/main/adh-logo.png)
@@ -89,7 +89,7 @@ Suggestions welcome. :)
 
 # Tip
 For creating DASH/ HLS compatible files for multiple videos in a single run, please have a look at:
-* [https://majamee.github.io/auto-dash-hls/](https://majamee.github.io/auto-dash-hls/?target=_blank)
+* [https://majamee.de/auto-dash-hls](https://majamee.de/auto-dash-hls/?target=_blank)
 
 # Demo
 [https://majamee.de/demos](https://majamee.de/demos/?target=_blank)
