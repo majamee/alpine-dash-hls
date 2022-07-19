@@ -1,6 +1,7 @@
 name: Docker Image CI
 
 on:
+  workflow_dispatch:
   push:
     branches: [ latest, edge, jpg-thumbnails, libressl, vtt-preview-generator, webvtt-mt ]
     
