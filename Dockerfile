@@ -1,4 +1,4 @@
-FROM                alpine:latest
+FROM                alpine:3.15
 
 COPY                ./transcode.sh /bin/transcode.sh
 COPY                ./webvtt.sh /bin/webvtt.sh
@@ -31,7 +31,7 @@ RUN                buildDeps="build-base \
                    sdl-dev \
                    openjpeg-dev \
                    expat-dev" && \
-                   apk  add --no-cache --update ${buildDeps} ffmpeg libxslt openssl libpng bash exiv2 && \
+                   apk add --no-cache --update ${buildDeps} ffmpeg libxslt openssl libpng bash exiv2 && \
                    git clone https://github.com/squidpickles/mpd-to-m3u8.git /app/mpd-to-m3u8 && \
                    rm -rf !$/.git && \
                    git clone https://github.com/gpac/gpac.git /tmp/gpac && \
