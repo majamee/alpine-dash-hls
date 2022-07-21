@@ -1,12 +1,13 @@
+<p align="center"><img src="https://raw.githubusercontent.com/majamee/adh/main/adh-logo.png"></p>
+
 [![Docker Image CI](https://github.com/majamee/alpine-dash-hls/actions/workflows/docker-image.yml/badge.svg?branch=edge)](https://github.com/majamee/alpine-dash-hls/actions/workflows/docker-image.yml) [![](https://img.shields.io/docker/automated/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/cloud/build/majamee/alpine-dash-hls.svg)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) |
 [![](https://img.shields.io/docker/stars/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank) [![](https://img.shields.io/docker/pulls/majamee/alpine-dash-hls.svg?style=social)](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank)
 
-![Alpine Dash HLS - Simple Stream Videos](https://raw.githubusercontent.com/majamee/adh/main/adh-logo.png)
 
 # [Alpine Dash HLS](https://majamee.de)
 A ready-prepared video transcoding pipeline to create DASH/ HLS compatible video files &amp; playlists.
 
-Recommended usage via Docker [Kitematic](https://kitematic.com/?target=_blank) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank).
+Recommended usage via Docker [Docker Desktop](https://www.docker.com/products/docker-desktop/?target=_blank) & [Docker Hub](https://hub.docker.com/r/majamee/alpine-dash-hls/?target=_blank).
 
 # Simplified usage (run in shell/ terminal/ cmd)
 Prerequisite: [Docker](https://www.docker.com/?target=_blank) needs to be installed and running.
