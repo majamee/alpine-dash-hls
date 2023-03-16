@@ -1,4 +1,4 @@
-FROM                alpine:latest
+FROM                alpine:edge
 
 COPY                ./transcode.sh /bin/transcode.sh
 COPY                ./webvtt.sh /bin/webvtt.sh
