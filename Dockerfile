@@ -14,7 +14,10 @@ RUN                 buildDeps="alsa-lib-dev \
                     freetype-static \
                     freetype-dev \
                     git \
+                    glib-static \
                     glu-dev \
+                    graphite2-static \
+                    harfbuzz-static \
                     jack-dev \
                     jpeg-dev \
                     lame-dev \
