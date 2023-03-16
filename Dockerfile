@@ -1,7 +1,7 @@
 FROM                alpine:latest
 
 COPY                ./transcode.sh /bin/transcode.sh
-COPY                ./webvtt.sh /bin/webvtt.sh
+COPY                ./sprite.sh /bin/sprite.sh
 
 RUN                 buildDeps="alsa-lib-dev \
                     build-base \
@@ -49,7 +49,7 @@ RUN                 buildDeps="alsa-lib-dev \
                     cd /tmp/gpac && ./configure --static-bin && make -j4 && make install && make distclean && cd && rm -rf /tmp/gpac && \
                     apk del ${buildDeps} && rm -rf /var/cache/apk/* && \
                     chmod +x /bin/transcode.sh && \
-                    chmod +x /bin/webvtt.sh
+                    chmod +x /bin/sprite.sh
 
 COPY                ./src /app/src
 

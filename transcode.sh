@@ -10,16 +10,24 @@ echo -e "\nCurrent video: ${input_file}\nDetected file name: ${filename}\nTotal 
 mkdir -p "output/${filename}/";
 
 if [[ -z "$2" ]]; then
-  # Create Video Preview thumbnails, unless parameter "--transcode-only"
-  /bin/webvtt.sh "${input_file}";
+  # Create Video Preview thumbnails
+  /bin/sprite.sh "${input_file}";
 
-  # Create Video Poster (from second 3), unless parameter "--transcode-only"
+  # Create Video Poster (from second 3)
   echo -e "\nCreating Video Poster (from second 3)" && \
   ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -vframes 1 -vcodec png "output/${filename}/thumbnails/poster.png";
 else
   if [ $2 != "--transcode-only" ]; then
     # Create Video Preview thumbnails, unless parameter "--transcode-only"
-    /bin/webvtt.sh "${input_file}";
+    /bin/sprite.sh "${input_file}";
+
+    # Create Video Poster (from second 3)
+    echo -e "\nCreating Video Poster (from second 3)" && \
+    ffmpeg -y -v error -i "${input_file}" -ss 00:00:03 -vframes 1 -vcodec png "output/${filename}/thumbnails/poster.png";
+  else
+    echo -e "\nTranscode only selected: No HTML and image files will be created.";
+  fi
+fi
 
     # Create Video Poster (from second 3), unless parameter "--transcode-only"
     echo -e "\nCreating Video Poster (from second 3)" && \
