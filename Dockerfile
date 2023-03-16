@@ -34,7 +34,7 @@ RUN                 buildDeps="alsa-lib-dev \
                     mesa-utils \
                     musl-dev \
                     openjpeg-dev \
-                    openssl-dev \
+                    libressl-dev \
                     opus-dev \
                     sdl2-dev \
                     x264-dev \
@@ -42,7 +42,7 @@ RUN                 buildDeps="alsa-lib-dev \
                     xvidcore-static \
                     yasm-dev \
                     zlib-static" && \
-                    apk add --no-cache --update ${buildDeps} bash exiv2 ffmpeg libpng libxslt openssl && \
+                    apk add --no-cache --update ${buildDeps} bash exiv2 ffmpeg libpng libxslt libressl && \
                     git clone https://github.com/squidpickles/mpd-to-m3u8.git /app/mpd-to-m3u8 && \
                     rm -rf !$/.git && \
                     git clone https://github.com/gpac/gpac.git /tmp/gpac && \
