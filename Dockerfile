@@ -15,6 +15,7 @@ RUN                 buildDeps="alsa-lib-dev \
                     freetype-dev \
                     git \
                     glu-dev \
+                    go \
                     jack-dev \
                     jpeg-dev \
                     lame-dev \
@@ -47,6 +48,8 @@ RUN                 buildDeps="alsa-lib-dev \
                     rm -rf !$/.git && \
                     git clone https://github.com/gpac/gpac.git /tmp/gpac && \
                     cd /tmp/gpac && ./configure --static-bin && make -j4 && make install && make distclean && cd && rm -rf /tmp/gpac && \
+                    go install github.com/mutschler/mt@latest && \
+                    mv go/bin/mt /bin/ && rm -rf go && \
                     apk del ${buildDeps} && rm -rf /var/cache/apk/* && \
                     chmod +x /bin/transcode.sh && \
                     chmod +x /bin/webvtt.sh
