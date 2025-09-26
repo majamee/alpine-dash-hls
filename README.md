@@ -90,7 +90,4 @@ Suggestions welcome. :)
 
 # Tip
 For creating DASH/ HLS compatible files for multiple videos in a single run, please have a look at:
-* [https://majamee.de/auto-dash-hls](https://majamee.de/auto-dash-hls/?target=_blank)
-
-# Demo
-[https://majamee.de/demos](https://majamee.de/demos/?target=_blank)
+* [https://github.com/majamee/auto-dash-hls](https://github.com/majamee/auto-dash-hls/?target=_blank)
